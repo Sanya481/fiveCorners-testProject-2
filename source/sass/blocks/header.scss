@@ -1,0 +1,12 @@
+.header {
+  border-bottom: 0.5px solid #C8C8C8;
+  margin-bottom: 5rem;
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 25px 0;
+}

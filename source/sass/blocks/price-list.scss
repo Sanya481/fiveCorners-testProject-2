@@ -1,0 +1,83 @@
+.price-list {
+  /* Рамки ячеек располагаются раздельно.  */
+  border-collapse: separate;
+  /* Расстояние между ячейками - первое определяет горизонтальное расстояние, а второе — вертикальное. */
+  /* !!! border-spacing - Задает расстояние между границами ячеек в таблице. border-spacing не работает в случае, когда для таблицы установлено свойство border-collapse со значением collapse.  */
+  border-spacing: 8px 5px;
+
+  width: 100%;
+
+  margin: 0 0 2rem;
+}
+
+.price-list__title h4 {
+  font-weight: 400;
+  margin: 0;
+}
+
+.price-list__number {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 3px;
+}
+
+.price-list__number p {
+  margin: 0;
+}
+
+/* price-list__total-sum */
+
+.price-list__total-sum,
+.price-list__delivery {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+/* Отступы */
+.price-list__total-sum .price-list__title,
+.price-list__total-sum .price-list__number {
+  padding: 0 0 1.2rem;
+}
+
+/* Стоимость */
+.price-list__total-sum .price-list__number,
+.price-list__delivery .price-list__number {
+  font-weight: 700;
+}
+
+/* Знак рубля */
+.price-list__total-sum span,
+.price-list__delivery span {
+  font-weight: 400;
+}
+
+
+/* Рассчет скидки */
+.price-list__discount {
+  // margin: 2rem 0;
+  font-size: 1.6rem;
+  line-height: 1.3;
+}
+
+.price-list__discount .price-list__number {
+  color: #D92C2C;
+}
+
+.price-list__total-discount {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.price-list__total-discount .price-list__number {
+  font-weight: 700;
+}
+
+.price-list__total-discount span {
+  font-weight: 400;
+}
+
+/* Отступы */
+.price-list__delivery .price-list__title,
+.price-list__delivery .price-list__number {
+  padding: 1.2rem 0 0;
+}

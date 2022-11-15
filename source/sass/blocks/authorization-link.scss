@@ -1,0 +1,41 @@
+.authorization-link {
+  // margin-top: -0.3rem;
+  align-self: end;
+}
+
+.authorization-link span {
+  line-height: 1.3rem;
+  cursor: default;
+}
+
+.authorization-link button {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.3rem;
+  padding: 0.2rem;
+
+  cursor: pointer;
+  color: #6E6E6E;
+  background-color: transparent;
+  border: none;
+
+  transition: color 0.3s ease, text-decoration 0.3s ease-in-out;
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+    &:hover,
+    &:focus {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    &:active {
+      color: #f68050;
+    }
+  }
+
+  &:active {
+    color: #f68050;
+    text-decoration: none;
+  }
+}

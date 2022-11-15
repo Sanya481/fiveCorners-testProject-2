@@ -1,0 +1,45 @@
+.user-nav__list {
+  @include list-reset;
+
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 3rem;
+  row-gap: 2rem;
+}
+
+.user-nav__link {
+  display: inline-block;
+  vertical-align: middle;
+
+  width: 2rem;
+  height: 2rem;
+
+  position: relative;
+}
+
+.user-nav__link svg {
+  width: 100%;
+  height: 100%;
+}
+
+.user-nav__link span {
+  position: absolute;
+  top: -3px;
+  right: -7px;
+
+  font-size: 1rem;
+  /* Если при вёрстке макета вы видите в графическом редакторе межстрочное расстояние, заданное в пикселях, то не стоит переносить его в точности. В случае, если размер шрифта элемента изменится, то абсолютно заданное межстрочное расстояние не подстроится. А хотелось бы больше гибкости.*/
+  // Используй следующую функцию для расчёта относительного интерлиньяжа:
+  // line height / font size = относительный line-height
+  line-height: 0.8;
+  width: 1.7rem;
+  height: 1.6rem;
+  text-align: center;
+  padding: 4px;
+
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 50%;
+
+  pointer-events: none;
+}

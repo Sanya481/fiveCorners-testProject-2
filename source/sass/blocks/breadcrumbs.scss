@@ -1,0 +1,50 @@
+.breadcrumbs {
+  margin-bottom: 4rem;
+}
+
+.breadcrumbs__list {
+  @include list-reset;
+
+  display: flex;
+}
+
+.breadcrumbs__item {
+  &:not(:last-child)::after {
+    content: "\2044";
+    display: inline-block;
+    position: relative;
+    padding: 0 1rem;
+    color: #6E6E6E;
+    transform: rotate(-13deg) translate(-3px, -1px);
+  }
+}
+
+.breadcrumbs__item a {
+  font-size: 1.2rem;
+  line-height: 1.25rem;
+  color: #6E6E6E;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+    &:hover,
+    &:focus {
+      color: #000000;
+    }
+
+    &:active {
+      color: #f68050;
+    }
+  }
+
+  &:active {
+    color: #f68050;
+  }
+}
+
+.breadcrumbs__item.is-current a {
+  color: #000000;
+  cursor: default;
+}

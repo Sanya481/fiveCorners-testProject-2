@@ -1,0 +1,82 @@
+.promo-code {
+  position: relative;
+
+  margin: 0 0 2rem 0;
+}
+
+.promo-code input {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  width: 100%;
+  padding: 1.5rem 11.5rem 1.5rem 2rem;
+}
+
+.promo-code input::placeholder {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.3;
+}
+
+.promo-code__btn {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  font-weight: 700;
+
+  /* Область клика */
+  height: 100%;
+  padding: 0 1.6rem 0 0;
+
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
+
+  /* Скрываем */
+  display: none;
+}
+
+/* Доработать */
+.promo-code label:hover+.promo-code__btn {
+  display: block;
+}
+
+/* Смс об ошибке/удаче :) */
+
+.promo-code__message {
+  display: flex;
+
+  font-size: 1.2rem;
+  line-height: 1.25;
+
+  margin: 0.4rem 1.6rem 0;
+}
+
+.promo-code__message p {
+  margin: 0;
+}
+
+
+.cheque__btn-submit {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  font-weight: 700;
+
+  width: 100%;
+  padding: 1.5rem 3rem;
+  margin: 0 0 1rem;
+
+  color: #fff;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+}
+
+

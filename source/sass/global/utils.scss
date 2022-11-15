@@ -1,0 +1,55 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  font-size: 10px;
+  /* Если мы используем проценты(а не пиксели) и rem, то у нас будет зависимость от размера шрифта установленного в браузере. Т.е. если пользователь будет увеличивать щрифт и мы указали в процентах, то все будет увеличиваься, но может и ломаться верстка  */
+  /* Тоже самое что и 10px. Дефолтный размер в браузере - 16px это 100% */
+  font-size: 62.5%;
+}
+
+.page__body {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  background-color: #fff;
+  color: #000000;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+
+// Свойства для удаления стрелочек у input [type="number"]
+// Код взят с stackoverflow.com
+// Почему то просто, без префиксов свойство appearance: none; не работает
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"],
+input[type="number"]:hover,
+input[type="number"]:focus {
+  appearance: none;
+  -moz-appearance: textfield;
+}

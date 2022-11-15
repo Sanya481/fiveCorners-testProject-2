@@ -1,0 +1,41 @@
+// Global
+// ---------------------------------
+
+@import "global/fonts.scss";
+@import "global/container.scss";
+@import "global/utils.scss";
+@import "global/mixins.scss";
+@import "global/variables.scss";
+
+
+// Blocks
+// ---------------------------------
+
+// Header
+// ---------------------------------
+
+@import "blocks/header.scss";
+@import "blocks/site-nav.scss";
+@import "blocks/logo.scss";
+@import "blocks/user-nav.scss";
+
+// Main
+// ---------------------------------
+
+@import "blocks/breadcrumbs.scss";
+@import "blocks/authorization-link.scss";
+@import "blocks/making-order.scss";
+
+// Cheque
+// ---------------------------------
+
+@import "blocks/cheque.scss";
+@import "blocks/delivery.scss";
+@import "blocks/total-cost.scss";
+@import "blocks/promo-code.scss";
+@import "blocks/privacy-policy.scss";
+@import "blocks/price-list.scss";
+
+
+
+
