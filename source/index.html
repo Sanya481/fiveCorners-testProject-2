@@ -114,114 +114,190 @@
 
             </div>
 
-            <!-- Промежуточная стоимость -->
-            <div class="making-order__approximate-cost approximate-cost">
-              <span>3</span>
-              <p>товара на&nbsp;сумму</p>
-              <span>25000</span>
-              <span>&#8381;</span>
-            </div>
+            <div>
+              <!-- Промежуточная стоимость -->
+              <div class="making-order__approximate-cost approximate-cost">
+                <span>3</span>
+                <p>товара на&nbsp;сумму</p>
+                <span>25000</span>
+                <span>&#8381;</span>
+              </div>
 
-            <!-- Товары -->
-            <ul class="making-order__product-list" data-product-list>
-              <li class="making-order__product-item product" data-product>
+              <!-- Товары -->
+              <ul class="making-order__product-list" data-product-list>
+                <li class="making-order__product-item product" data-product>
 
-                <div class="product__description">
-                  <a href="#">
-                    <h3>Утепленная стеганная куртка женская Top Hills</h3>
-                  </a>
+                  <div class="product__description">
+                    <a href="#">
+                      <h3>Утепленная стеганная куртка женская Top Hills</h3>
+                    </a>
 
-                  <div class="product__article-number article-number">
-                    <h4>Артикул</h4>
-                    <span>512-05</span>
+                    <div class="product__article-number article-number">
+                      <h4>Артикул</h4>
+                      <span>512-05</span>
+                    </div>
+
+                    <div class="product__season season">
+                      <h4>Сезон</h4>
+                      <p>Осень-зима</p>
+                    </div>
+
+                    <!-- Выбор размера -->
+                    <ul class="product__size size">
+                      <li>
+                        <input id="size-xs" class="visually-hidden" type="radio" name="size" value="extra-small">
+                        <label for="size-xs">XS</label>
+                      </li>
+                      <li>
+                        <input id="size-s" class="visually-hidden" type="radio" name="size" value="small">
+                        <label for="size-s">S</label>
+                      </li>
+                      <li>
+                        <input id="size-m" class="visually-hidden" type="radio" name="size" value="medium" checked>
+                        <label for="size-m">M</label>
+                      </li>
+                      <li>
+                        <input id="size-l" class="visually-hidden" class="visually-hidden" type="radio" name="size"
+                          value="large">
+                        <label for="size-l">L</label>
+                      </li>
+                      <li>
+                        <input id="size-xl" class="visually-hidden" type="radio" name="size" value="extra-large">
+                        <label for="size-xl">XL</label>
+                      </li>
+                    </ul>
+
+                    <!-- Выбор цвета -->
+                    <ul class="product__color color">
+                      <li class="color__black">
+                        <input class="visually-hidden" id="color-black" type="radio" name="color" value="black" checked>
+                        <label for="color-black"></label>
+                      </li>
+                      <li class="color__blue">
+                        <input class="visually-hidden" id="color-blue" type="radio" name="color" value="blue">
+                        <label for="color-blue"></label>
+                      </li>
+                      <li class="color__gray">
+                        <input class="visually-hidden" id="color-gray" type="radio" name="color" value="gray">
+                        <label for="color-gray"></label>
+                      </li>
+                    </ul>
                   </div>
 
-                  <div class="product__season season">
-                    <h4>Сезон</h4>
-                    <p>Осень-зима</p>
-                  </div>
-
-                  <!-- Выбор размера -->
-                  <ul class="product__size size">
-                    <li>
-                      <input id="size-xs" class="visually-hidden" type="radio" name="size" value="extra-small">
-                      <label for="size-xs">XS</label>
-                    </li>
-                    <li>
-                      <input id="size-s" class="visually-hidden" type="radio" name="size" value="small">
-                      <label for="size-s">S</label>
-                    </li>
-                    <li>
-                      <input id="size-m" class="visually-hidden" type="radio" name="size" value="medium" checked>
-                      <label for="size-m">M</label>
-                    </li>
-                    <li>
-                      <input id="size-l" class="visually-hidden" class="visually-hidden" type="radio" name="size"
-                        value="large">
-                      <label for="size-l">L</label>
-                    </li>
-                    <li>
-                      <input id="size-xl" class="visually-hidden" type="radio" name="size" value="extra-large">
-                      <label for="size-xl">XL</label>
-                    </li>
-                  </ul>
-
-                  <!-- Выбор цвета -->
-                  <ul class="product__color color">
-                    <li class="color__black">
-                      <input class="visually-hidden" id="color-black" type="radio" name="color" value="black" checked>
-                      <label for="color-black"></label>
-                    </li>
-                    <li class="color__blue">
-                      <input class="visually-hidden" id="color-blue" type="radio" name="color" value="blue">
-                      <label for="color-blue"></label>
-                    </li>
-                    <li class="color__gray">
-                      <input class="visually-hidden" id="color-gray" type="radio" name="color" value="gray">
-                      <label for="color-gray"></label>
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="product__quantity quantity-select" data-select-quantity>
-                  <!-- Цена -->
-                  <!-- <div>
+                  <div class="product__quantity quantity-select" data-select-quantity>
+                    <!-- Цена -->
+                    <!-- <div>
                     <p>10000</p>
                     <span>&#8381;</span>
                   </div> -->
 
-                  <button class="quantity-select__minus" type="button" data-btn-minus></button>
-                  <input type="number" min="1" max="5" value="1" name="product-quantity" data-product-quantity>
-                  <button class="quantity-select__plus" type="button" data-btn-plus></button>
+                    <button class="quantity-select__minus" type="button" data-btn-minus></button>
+                    <input type="number" min="1" max="5" value="1" name="product-quantity" data-product-quantity>
+                    <button class="quantity-select__plus" type="button" data-btn-plus></button>
 
-                  <!-- Цена -->
-                  <!-- <div>
+                    <!-- Цена -->
+                    <!-- <div>
                     <p>20000</p>
                     <span>&#8381;</span>
                   </div> -->
 
-                  <!-- Смс о превышении кол-ва вставится сюда -->
+                    <!-- Смс о превышении кол-ва вставится сюда -->
+                  </div>
+
+                  <a href="#" class="product__image">
+                    <picture>
+                      <!-- Размер фотографии 1x - 130 * 160, 2x - 260 * 320 -->
+                      <!-- webp 1x, 2x -->
+                      <source type="img/webp" srcset="img/products/product.webp, img/products/product@2x.webp 2x">
+                      <!-- jpg 1x, 2x -->
+                      <img src="img/products/product-1.jpg" srcset="img/products/product-1@2x.jpg 2x" width="130"
+                        height="160" alt="Товар, который вам точно понравится">
+                    </picture>
+                  </a>
+
+                  <button class="product__remove-btn" type="button" data-delete-product
+                    aria-label="Удалить товар"></button>
+
+                </li>
+              </ul>
+
+            </div>
+
+            <!-- Контактные данные под заполнение -->
+            <div class="making-order__contact contact">
+              <!-- Раскладка блоков -->
+              <div class="contact__wrapper">
+
+                <div class="contact__user-data">
+                  <h2>Контактные данные</h2>
+
+                  <fieldset class="contact__group">
+                    <p class="contact__field">
+                      <input id="field-for-name" type="text" name="user-name" placeholder=" " required>
+                      <label for="field-for-name">Имя</label>
+                    </p>
+                    <p class="contact__field">
+                      <input id="field-for-surname" type="text" name="user-surname" placeholder=" " required>
+                      <label for="field-for-surname">Фамилия</label>
+                    </p>
+                  </fieldset>
+
+                  <fieldset class="contact__group">
+                    <p class="contact__field">
+                      <input id="field-for-phone" type="number" name="user-phone" placeholder=" " required>
+                      <label for="field-for-phone">Телефон</label>
+                    </p>
+                    <p class="contact__field">
+                      <input id="field-for-mail" type="email" name="user-email" placeholder=" " required>
+                      <label for="field-for-mail">Email</label>
+                    </p>
+                  </fieldset>
+
+                  <p class="contact__address address contact__field">
+                    <input id="field-for-address" type="text" name="user-address" placeholder=" " required>
+                    <label for="field-for-address">Адрес доставки</label>
+                  </p>
                 </div>
 
-                <a href="#" class="product__image">
-                  <picture>
-                    <!-- Размер фотографии 1x - 130 * 160, 2x - 260 * 320 -->
-                    <!-- webp 1x, 2x -->
-                    <source type="img/webp" srcset="img/products/product.webp, img/products/product@2x.webp 2x">
-                    <!-- jpg 1x, 2x -->
-                    <img src="img/products/product-1.jpg" srcset="img/products/product-1@2x.jpg 2x" width="130"
-                      height="160" alt="Товар, который вам точно понравится">
-                  </picture>
-                </a>
 
-                <button class="product__remove-btn" type="button" data-delete-product
-                  aria-label="Удалить товар"></button>
+                <div class="contact__map map"></div>
 
-              </li>
-            </ul>
+                <div class="contact__payment payment">
+                  <h2>Оплата</h2>
+                  <ul class="payment__list">
+                    <li class="payment__item">
+                      <input class="visually-hidden" id="cash-to-courier" type="radio" name="payment"
+                        value="cash-to-the-courier" checked>
+                      <label for="cash-to-courier">Наличными курьеру</label>
+                    </li>
+                    <li class="payment__item">
+                      <input class="visually-hidden" id="card-to-courier" type="radio" name="payment"
+                        value="by-card-to-the-courier">
+                      <label for="card-to-courier">Картой курьеру</label>
+                    </li>
+                    <li class="payment__item">
+                      <input class="visually-hidden" id="cash-online" type="radio" name="payment"
+                        value="by-card-online">
+                      <label for="cash-online">Картой онлайн</label>
+                    </li>
+                  </ul>
+                </div>
 
-            <!-- Контактные данные -->
-            <div class="making-order__contact contact"></div>
+
+                <div class="contact__user-comment comment">
+                  <h2>Комментарий к заказу</h2>
+                  <p class="contact__field contact__field--textarea">
+                    <textarea id="field-for-comment" name="user-comment" placeholder=" "></textarea>
+                    <label for="field-for-comment">Комментарий к заказу</label>
+                  </p>
+                  <div class="comment__counter">
+                    <p>Использовано <span>0</span>/142 символов</p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
 
             <!-- Чек - итоговая стоимость -->
             <!-- --------------- -->
