@@ -1,0 +1,38 @@
+.burger {
+  display: none;
+
+  @media (max-width: 767px) {
+    display: inline-block;
+    vertical-align: middle;
+
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-left: 2.4rem;
+
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1.5px;
+      background-color: #000;
+      right: 0;
+    }
+
+    &::before {
+      width: 3.2rem;
+      top: 12px;
+    }
+
+    &::after {
+      width: 1.8rem;
+      top: 21px;
+    }
+  }
+}

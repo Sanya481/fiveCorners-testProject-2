@@ -2,6 +2,10 @@
   position: relative;
 
   margin: 0 0 2rem 0;
+
+  @media (max-width: 767px) {
+    margin: 0 0 1.2rem 0;
+  }
 }
 
 .promo-code input {
@@ -10,6 +14,10 @@
   line-height: 1.3;
   width: 100%;
   padding: 1.5rem 11.5rem 1.5rem 2rem;
+
+  @media (max-width: 767px) {
+    padding: 1.2rem 8rem 1.2rem 1.6rem;
+  }
 }
 
 .promo-code input::placeholder {
@@ -40,6 +48,12 @@
 
   /* Скрываем */
   display: none;
+
+  @media (max-width: 767px) {
+    font-size: 1.4rem;
+    line-height: 1.14;
+    padding: 0 1rem 0 0;
+  }
 }
 
 /* Доработать */
@@ -78,5 +92,3 @@
   border: none;
   cursor: pointer;
 }
-
-

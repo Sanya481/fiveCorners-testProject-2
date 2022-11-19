@@ -1,3 +1,9 @@
+.payment {
+  @media (max-width: 767px) {
+    margin: 0 0 4rem;
+  }
+}
+
 .payment__list {
   @include list-reset;
 

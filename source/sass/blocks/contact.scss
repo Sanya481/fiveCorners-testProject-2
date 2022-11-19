@@ -1,5 +1,9 @@
 .making-order__product-list {
-  margin-bottom: 500px;
+  // margin-bottom: 500px;
+
+  @media (max-width: 767px) {
+    margin: 0 0 4rem;
+  }
 }
 
 .making-order__contact {
@@ -14,6 +18,10 @@
   grid-template-rows: 264px;
   column-gap: 40px;
   row-gap: 40px;
+
+  @media (max-width: 767px) {
+    display: block;
+  }
 }
 
 .contact__user-data,
@@ -35,6 +43,13 @@ h2 {
   grid-column: 2/-1;
   align-self: start;
   grid-row: 1/2;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 22rem;
+
+    margin: 1.6rem 0 4rem;
+  }
 }
 
 .contact__wrapper h2 {
@@ -42,6 +57,14 @@ h2 {
   line-height: 1.07;
 
   margin: 0 0 3rem;
+
+  @media (max-width: 767px) {
+    font-size: 2.4rem;
+    line-height: 1.25;
+    font-weight: 400;
+
+    margin: 0 0 2.4rem;
+  }
 }
 
 .contact__group {
@@ -53,11 +76,29 @@ h2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
+
+  @media (max-width: 767px) {
+    display: block;
+
+    margin: 0 0 1.6rem;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
 }
 
 .contact__field {
   position: relative;
   margin: 0;
+
+  @media (max-width: 767px) {
+    margin: 0 0 1.6rem;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
 }
 
 .contact__field input {
@@ -67,6 +108,11 @@ h2 {
 
   width: 100%;
   padding: 1.5rem 2rem;
+
+
+  @media (max-width: 767px) {
+    padding: 1.2rem 1.6rem;
+  }
 }
 
 .contact__field label {
@@ -95,6 +141,12 @@ h2 {
 
 /* comment */
 
+.comment {
+  @media (max-width: 767px) {
+    margin: 0 0 4rem;
+  }
+}
+
 .comment__counter {
   font-size: 1.2rem;
   line-height: 1.25;
@@ -114,6 +166,13 @@ h2 {
   padding: 1.5rem 2rem;
   resize: none;
 }
+
+.contact__field--textarea {
+  @media (max-width: 767px) {
+    margin: 0 0 0.4rem;
+  }
+}
+
 
 .contact__field--textarea label {
   top: 20%;

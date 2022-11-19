@@ -1,3 +1,10 @@
+.user-nav {
+  @media (max-width: 767px) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
 .user-nav__list {
   @include list-reset;
 
@@ -5,6 +12,19 @@
   flex-wrap: wrap;
   column-gap: 3rem;
   row-gap: 2rem;
+}
+
+/* Скрыл все элементы кроме последнего */
+.user-nav__item {
+  display: block;
+
+  @media (max-width: 767px) {
+    display: none;
+
+    &--cart {
+      display: block;
+    }
+  }
 }
 
 .user-nav__link {
@@ -15,6 +35,13 @@
   height: 2rem;
 
   position: relative;
+
+  @media (max-width: 767px) {
+    &--cart {
+      width: 2.8rem;
+      height: 2.8rem;
+    }
+  }
 }
 
 .user-nav__link svg {
@@ -42,4 +69,8 @@
   border-radius: 50%;
 
   pointer-events: none;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 }

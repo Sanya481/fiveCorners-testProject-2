@@ -1,6 +1,11 @@
 .header {
   border-bottom: 0.5px solid #C8C8C8;
   margin-bottom: 5rem;
+
+  @media (max-width: 767px) {
+    border-bottom: none;
+    margin-bottom: 2.5rem;
+  }
 }
 
 .header__wrapper {
@@ -8,5 +13,9 @@
   justify-content: space-between;
   align-items: center;
 
-  padding: 25px 0;
+  padding: 2.5rem 0;
+
+  @media (max-width: 767px) {
+    padding: 2.5rem 0 0;
+  }
 }
