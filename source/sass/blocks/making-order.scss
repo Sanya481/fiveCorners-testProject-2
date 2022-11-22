@@ -5,7 +5,7 @@
   grid-template-rows: 42px;
   column-gap: 4rem;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     display: block;
   }
 }
@@ -24,11 +24,15 @@
 
   // margin: 0 0 6rem;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     display: block;
 
     margin: 0 0 3.2rem;
   }
+}
+
+.making-order__body {
+  margin: 0 0 2rem;
 }
 
 .making-order__header h1 {
@@ -37,7 +41,7 @@
 
   margin: 0;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     font-size: 2.8rem;
     line-height: 1.07;
     font-weight: 400;
@@ -225,13 +229,14 @@
 .product {
   display: grid;
   grid-template-columns: 130px 1fr 1fr min-content;
+  grid-template-rows: min-content auto;
   column-gap: 10px;
 
   padding: 2.5rem 0;
   border-top: 0.5px solid #C8C8C8;
   border-bottom: 0.5px solid #C8C8C8;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     grid-template-columns: min-content 1fr min-content;
     column-gap: 4px;
     row-gap: 8px;
@@ -244,7 +249,11 @@
   color: inherit;
   text-decoration: none;
 
-  @media (max-width: 767px) {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  max-width: 200px;
+
+  @include breakpoint($vp-767) {
     grid-column: 2/3;
   }
 }
@@ -255,7 +264,7 @@
   font-weight: 400;
   margin: 0 0 1.5rem;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     font-size: 1.4rem;
     line-height: 1.3;
   }
@@ -263,14 +272,20 @@
 
 .product__description {
   grid-column: 2/3;
+  grid-row: 2/3;
   max-width: 20rem;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     grid-column: 1/-1;
     max-width: 100%;
 
     margin: 0 0 0.8rem;
   }
+}
+
+.product__quantity {
+  grid-row: 1/2;
+  grid-column: 3/4;
 }
 
 // .product__description h3 {
@@ -289,11 +304,13 @@
   height: 16rem;
   grid-row: 1/-1;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     width: 9rem;
     height: 11rem;
-
     margin: 0 0.8rem 0 0;
+
+    grid-row: auto;
+
   }
 }
 
@@ -316,113 +333,6 @@
   grid-column: 2/-1;
 }
 
-/* quantity-select */
-
-.quantity-select {
-  display: flex;
-  justify-content: space-between;
-
-  width: 153px;
-  height: 42px;
-
-  background-color: #F1F1F1;
-  border-radius: 5px;
-
-  // Для смс об ошибке
-  position: relative;
-
-  @media (max-width: 767px) {
-    grid-column: 1/-1;
-    // justify-self: center;
-  }
-}
-
-// Рисуем плюс/минус с помощью css
-.quantity-select button {
-  flex-shrink: 0;
-
-  width: 42px;
-  height: 100%;
-  padding: 0;
-
-  border: none;
-  background-color: #f1f1f1;
-  cursor: pointer;
-
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 12px;
-    height: 2px;
-    background-color: #000;
-
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  // Эффекты при наведении в десктопной версии
-  @media (min-width: 1200px) {
-
-    &:hover,
-    &:focus {
-      background-color: #f68050;
-    }
-
-    &:active {
-      background-color: darken(#f68050, 20%);
-    }
-  }
-
-  &:active {
-    background-color: darken(#f68050, 20%);
-  }
-}
-
-// Не уверен, как лучше обращаться - с помощью класса или :last-child
-.quantity-select__plus::before {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 2px;
-  background-color: #000;
-
-  left: 50%;
-  transform: translateX(-50%) rotate(90deg);
-}
-
-.quantity-select button:disabled {
-  cursor: default;
-  background-color: transparent;
-
-  &:hover,
-  &:focus {
-    background-color: transparent;
-  }
-
-  &::after,
-  &::before {
-    background-color: #9f9f9f;
-  }
-}
-
-.quantity-select input {
-  font-family: "Helvetica", "Arial", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 23px;
-
-  width: 100%;
-  padding: 2px;
-
-  border: none;
-  background-color: #f1f1f1;
-  text-align: center;
-
-  z-index: 1;
-}
-
 /* product__remove-btn */
 .product__remove-btn {
   position: relative;
@@ -435,7 +345,10 @@
 
   transition: border-radius 0.3s ease-in-out;
 
-  @media (max-width: 767px) {
+  grid-row: 1/2;
+  grid-column: 4/5;
+
+  @include breakpoint($vp-767) {
     grid-column: 3/-1;
     grid-row: 1/2;
   }

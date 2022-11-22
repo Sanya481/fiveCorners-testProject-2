@@ -7,7 +7,6 @@
 @import "global/mixins.scss";
 @import "global/variables.scss";
 
-
 // Blocks
 // ---------------------------------
 
@@ -36,6 +35,11 @@
 @import "blocks/promo-code.scss";
 @import "blocks/privacy-policy.scss";
 @import "blocks/price-list.scss";
+
+// Product
+// ---------------------------------
+
+@import "blocks/quantity-select.scss";
 
 // Contact
 // ---------------------------------

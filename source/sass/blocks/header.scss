@@ -5,6 +5,24 @@
   @media (max-width: 767px) {
     border-bottom: none;
     margin-bottom: 2.5rem;
+
+    /* Для меню в мобилке */
+    position: relative;
+
+    /* Плашка */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 0;
+      background-color: #000;
+      z-index: $header-bar;
+
+      transition: height 0.3s linear;
+    }
   }
 }
 
@@ -18,4 +36,11 @@
   @media (max-width: 767px) {
     padding: 2.5rem 0 0;
   }
+}
+
+/* Добавление плашки при открытии меню, чтобы при большом количестве эл-ов навигации в мобильном меню ничего не заезжало на бургер*/
+
+.header.is-open::after {
+  height: 6rem;
+
 }

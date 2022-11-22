@@ -4,14 +4,15 @@
   min-height: 574px;
   border: 1px solid #6E6E6E;
 
-  padding: 3rem 1.9rem;
-  margin: 0 0 4rem;
+  padding: 3rem 2rem;
+
 
   @media (max-width: 767px) {
     width: 100%;
     min-height: 100%;
     padding: 2.4rem 1.6rem;
+    margin: 0 0 4rem;
   }
 }
 
-.cheque__privacy-policy {}
+// .cheque__privacy-policy {}

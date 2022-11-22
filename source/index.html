@@ -10,12 +10,12 @@
 
 <body class="page__body">
 
-  <header class="header">
+  <header class="header" data-header>
     <div class="container">
       <div class="header__wrapper">
 
         <!-- Навигация по сайту -->
-        <nav class="header__nav site-nav">
+        <nav class="header__nav site-nav" data-mobile-nav>
           <ul class="site-nav__list">
             <li class="site-nav__item">
               <a href="#">Каталог</a>
@@ -27,10 +27,18 @@
               <a href="#">Магазины</a>
             </li>
           </ul>
+          <ul class="site-nav__list site-nav__list--mobile">
+            <li class="site-nav__item">
+              <a href="#">Профиль</a>
+            </li>
+            <li class="site-nav__item">
+              <a href="#">Избранное</a>
+            </li>
+          </ul>
         </nav>
 
         <!-- Логотип -->
-        <a href="#" class="header__logo logo" aria-label="Логотип сайта">
+        <a href="#" class="header__logo logo" data-logo aria-label="Логотип сайта">
           <svg width="100" height="22">
             <use xlink:href="img/sprite.svg#logo"></use>
           </svg>
@@ -75,7 +83,7 @@
           </nav>
 
           <!-- Бургер в мобилке -->
-          <button class="header__burger burger" type="button" aria-label="Закрыть/открыть меню"></button>
+          <button class="header__burger burger" type="button" data-burger aria-label="Закрыть/открыть меню"></button>
         </div>
       </div>
     </div>
@@ -119,7 +127,7 @@
 
             </div>
 
-            <div>
+            <div class="making-order__body">
               <!-- Промежуточная стоимость -->
               <div class="making-order__approximate-cost approximate-cost">
                 <span>3</span>
@@ -557,7 +565,7 @@
     </div>
   </template>
 
-  <script src="js/script.js"></script>
+  <script type="module" src="js/script.js"></script>
 </body>
 
 </html>

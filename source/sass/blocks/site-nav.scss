@@ -2,7 +2,31 @@
   display: block;
 
   @media (max-width: 767px) {
-    display: none;
+    display: block;
+    position: fixed;
+
+    /* Растягиваем на всю ширину и прижимаем к верху*/
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+
+    /* Прокручивание когда не помещаются эл-ты по высоте */
+    height: 100%;
+    overflow: auto;
+
+    background-color: #000;
+    padding: 6rem 0 0;
+
+    z-index: $mobile-menu;
+
+    transition: top 0.3s linear, transform 0.3s linear;
+
+    &.is-open {
+      top: 0;
+      transform: translateX(0);
+    }
   }
 }
 
@@ -14,6 +38,22 @@
   column-gap: 4rem;
   row-gap: 2rem;
 
+  &--mobile {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    display: block;
+    text-align: center;
+
+    padding: 0 0 2rem;
+
+    &--mobile {
+      display: block;
+      padding: 0 0 2rem;
+
+    }
+  }
 }
 
 .site-nav__item a {
@@ -22,6 +62,31 @@
   color: #000;
 
   text-decoration: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 1rem 0;
+
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      color: #000000;
+    }
+
+    &:active {
+      color: #f68050;
+    }
+  }
+
+  &:active {
+    color: #f68050;
+  }
 }
-
-

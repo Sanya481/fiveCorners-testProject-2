@@ -1,7 +1,7 @@
 .making-order__product-list {
   // margin-bottom: 500px;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     margin: 0 0 4rem;
   }
 }
@@ -10,17 +10,27 @@
   grid-column: 1/-1;
 }
 
-.contact {}
+// .contact {}
 
 .contact__wrapper {
-  display: grid;
-  grid-template-columns: 760px 400px;
-  grid-template-rows: 264px;
-  column-gap: 40px;
+  /* flex - для отступов между блоками */
+  display: flex;
+  flex-direction: column;
   row-gap: 40px;
 
-  @media (max-width: 767px) {
+  // display: grid;
+  // grid-template-columns: 760px 400px;
+  // grid-template-rows: 264px;
+  // column-gap: 40px;
+  // row-gap: 40px;
+
+  padding-right: 44rem;
+  position: relative;
+
+  @include breakpoint($vp-767) {
     display: block;
+    position: static;
+    padding-right: 0;
   }
 }
 
@@ -33,19 +43,31 @@ h2 {
 }
 
 
+.contact__user-data {
+  padding: 2rem 0 0;
+}
+
 /* map */
 
 .map {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: 450px;
   background-color: rgb(77, 146, 173);
 
-  grid-column: 2/-1;
-  align-self: start;
-  grid-row: 1/2;
+  // grid-column: 2/-1;
+  // align-self: start;
+  // grid-row: 1/2;
 
-  @media (max-width: 767px) {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  @include breakpoint($vp-767) {
+    position: static;
+
     width: 100%;
+    max-width: none;
     height: 22rem;
 
     margin: 1.6rem 0 4rem;
@@ -58,7 +80,7 @@ h2 {
 
   margin: 0 0 3rem;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     font-size: 2.4rem;
     line-height: 1.25;
     font-weight: 400;
@@ -77,7 +99,7 @@ h2 {
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     display: block;
 
     margin: 0 0 1.6rem;
@@ -92,7 +114,7 @@ h2 {
   position: relative;
   margin: 0;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     margin: 0 0 1.6rem;
 
     &:last-child {
@@ -110,7 +132,7 @@ h2 {
   padding: 1.5rem 2rem;
 
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     padding: 1.2rem 1.6rem;
   }
 }
@@ -131,7 +153,9 @@ h2 {
 }
 
 .contact__field input:focus+label,
-.contact__field textarea:focus+label {
+.contact__field input:not(:placeholder-shown)+label,
+.contact__field textarea:focus+label,
+.contact__field textarea:not(:placeholder-shown)+label {
   font-size: 1.2rem;
   line-height: 1.25;
   top: -4%;
@@ -142,7 +166,7 @@ h2 {
 /* comment */
 
 .comment {
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     margin: 0 0 4rem;
   }
 }
@@ -168,7 +192,7 @@ h2 {
 }
 
 .contact__field--textarea {
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     margin: 0 0 0.4rem;
   }
 }

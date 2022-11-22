@@ -15,6 +15,7 @@
     cursor: pointer;
 
     position: relative;
+    z-index: $burger;
 
     &::before,
     &::after {
@@ -23,16 +24,38 @@
       height: 1.5px;
       background-color: #000;
       right: 0;
+
+      transition: background-color 0.3s linear;
     }
 
     &::before {
       width: 3.2rem;
       top: 12px;
+
+      transition: transform 0.3s linear;
     }
 
     &::after {
       width: 1.8rem;
       top: 21px;
+
+      transition: transform 0.3s linear, top 0.3s linear;
     }
   }
+}
+
+/* При открытом меню */
+.burger.is-open::before,
+.burger.is-open::after {
+  background-color: #fff;
+}
+
+.burger.is-open::before {
+  transform: rotate(45deg);
+}
+
+.burger.is-open::after {
+  top: 12px;
+  width: 3.2rem;
+  transform: rotate(-45deg);
 }

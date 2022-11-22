@@ -24,6 +24,11 @@ html {
   font-weight: 400;
   background-color: #fff;
   color: #000000;
+
+  @media (max-width: 767px) {
+    /* Для темного фона */
+    position: relative;
+  }
 }
 
 .visually-hidden {
@@ -52,4 +57,19 @@ input[type="number"]:hover,
 input[type="number"]:focus {
   appearance: none;
   -moz-appearance: textfield;
+}
+
+.page__body.shadow::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(3, 16, 27, 0.7);
+  z-index: 4;
+
+  transition: background-color 0.3s linear;
+}
+
+.page__body.scroll-lock {
+  overflow: hidden;
 }
