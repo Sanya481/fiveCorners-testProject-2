@@ -23,6 +23,22 @@
 
       transition: height 0.3s linear;
     }
+
+    /* Выезжающий фон - справа у мобильного меню */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 6rem;
+      right: -50%;
+
+      width: 50%;
+      height: 100vh;
+      background-color: #000;
+
+      transition: right 0.3s linear;
+      z-index: $mobile-menu;
+
+    }
   }
 }
 
@@ -43,4 +59,8 @@
 .header.is-open::after {
   height: 6rem;
 
+}
+
+.header.is-open::before {
+  right: 0;
 }

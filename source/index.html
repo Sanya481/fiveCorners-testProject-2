@@ -429,121 +429,123 @@
             </div>
 
             <!-- Чек - итоговая стоимость -->
-            <div class="making-order__cheque cheque">
+            <div class="making-order__cheque">
+              <div class="cheque">
 
-              <!-- Таблица -->
-              <table class="cheque__price-list price-list">
+                <!-- Таблица -->
+                <table class="cheque__price-list price-list">
 
-                <!-- Общая стоимость без скидок -->
-                <tbody class="price-list__total-sum">
-                  <tr>
-                    <td class="price-list__title">
-                      <h4>Товары</h4>
-                    </td>
-                    <td class="price-list__number">
-                      <p>24&nbsp;500</p>
-                      <span>&#8381;</span>
-                    </td>
-                  </tr>
-                </tbody>
+                  <!-- Общая стоимость без скидок -->
+                  <tbody class="price-list__total-sum">
+                    <tr>
+                      <td class="price-list__title">
+                        <h4>Товары</h4>
+                      </td>
+                      <td class="price-list__number">
+                        <p>24&nbsp;500</p>
+                        <span>&#8381;</span>
+                      </td>
+                    </tr>
+                  </tbody>
 
-                <!-- Рассчет скидки -->
-                <tbody class="price-list__discount">
-                  <tr class="price-list__total-discount">
-                    <td class="price-list__title">
-                      <h4>Скидка</h4>
-                    </td>
-                    <td class="price-list__number">
-                      <p>-&nbsp;4&nbsp;500</p>
-                      <span>&#8381;</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="price-list__title">
-                      <h4>Акции</h4>
-                    </td>
-                    <td class="price-list__number">
-                      <p>-&nbsp;4&nbsp;000</p>
-                      <span>&#8381;</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="price-list__title">
-                      <h4>Промокод</h4>
-                    </td>
-                    <td class="price-list__number">
-                      <p>-&nbsp;500</p>
-                      <span>&#8381;</span>
-                    </td>
-                  </tr>
-                </tbody>
+                  <!-- Рассчет скидки -->
+                  <tbody class="price-list__discount">
+                    <tr class="price-list__total-discount">
+                      <td class="price-list__title">
+                        <h4>Скидка</h4>
+                      </td>
+                      <td class="price-list__number">
+                        <p>-&nbsp;4&nbsp;500</p>
+                        <span>&#8381;</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="price-list__title">
+                        <h4>Акции</h4>
+                      </td>
+                      <td class="price-list__number">
+                        <p>-&nbsp;4&nbsp;000</p>
+                        <span>&#8381;</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="price-list__title">
+                        <h4>Промокод</h4>
+                      </td>
+                      <td class="price-list__number">
+                        <p>-&nbsp;500</p>
+                        <span>&#8381;</span>
+                      </td>
+                    </tr>
+                  </tbody>
 
-                <!-- Расходы на доставку -->
-                <tbody class="price-list__delivery">
-                  <tr>
-                    <td class="price-list__title">
-                      <h4>Доставка</h4>
-                    </td>
-                    <td class="price-list__number">
-                      <p>200</p>
-                      <span>&#8381;</span>
-                    </td>
-                  </tr>
-                </tbody>
+                  <!-- Расходы на доставку -->
+                  <tbody class="price-list__delivery">
+                    <tr>
+                      <td class="price-list__title">
+                        <h4>Доставка</h4>
+                      </td>
+                      <td class="price-list__number">
+                        <p>200</p>
+                        <span>&#8381;</span>
+                      </td>
+                    </tr>
+                  </tbody>
 
-              </table>
+                </table>
 
-              <!-- Уточнения по доставке -->
-              <div class="cheque__delivery delivery">
-                <label>
-                  <!-- Поместил текст выше input для скринридеров -->
-                  <div class="delivery__info">
-                    <p>Получить товар со склада</p>
-                    <span>Сроки получения могут измениться</span>
-                  </div>
+                <!-- Уточнения по доставке -->
+                <div class="cheque__delivery delivery">
+                  <label>
+                    <!-- Поместил текст выше input для скринридеров -->
+                    <div class="delivery__info">
+                      <p>Получить товар со склада</p>
+                      <span>Сроки получения могут измениться</span>
+                    </div>
 
-                  <input class="visually-hidden" type="checkbox" name="good-from-the-warehouse">
-                  <!-- Кастомный checkbox -->
-                  <span class="delivery__checkbox-indicator"></span>
-                </label>
-              </div>
-
-              <!-- Итоговая стоимость -->
-              <div class="cheque__price-text total-cost">
-                <p>Итого:</p>
-                <div class="total-cost__number">
-                  <!-- Разделил цифру с значком рубля для удобства работы из js -->
-                  <!-- При добавлении стоимости через js - не забывать про пробел в стоимости!!! -->
-                  <p>20&nbsp;700</p>
-                  <span>&#8381;</span>
+                    <input class="visually-hidden" type="checkbox" name="good-from-the-warehouse">
+                    <!-- Кастомный checkbox -->
+                    <span class="delivery__checkbox-indicator"></span>
+                  </label>
                 </div>
-              </div>
 
-              <!-- Промокод -->
-              <div class="cheque__promo-code promo-code">
+                <!-- Итоговая стоимость -->
+                <div class="cheque__price-text total-cost">
+                  <p>Итого:</p>
+                  <div class="total-cost__number">
+                    <!-- Разделил цифру с значком рубля для удобства работы из js -->
+                    <!-- При добавлении стоимости через js - не забывать про пробел в стоимости!!! -->
+                    <p>20&nbsp;700</p>
+                    <span>&#8381;</span>
+                  </div>
+                </div>
 
-                <label>
-                  <input type="text" name="promotional-code" placeholder="Введите промокод">
-                </label>
+                <!-- Промокод -->
+                <div class="cheque__promo-code promo-code">
 
-                <button class="promo-code__btn" type="button">Применить</button>
+                  <label>
+                    <input type="text" name="promotional-code" placeholder="Введите промокод">
+                  </label>
 
-                <!-- Смс об ошибке/удаче :) - сюда вставляем и не забываем убрать кнопку -->
-                <!-- <div class="promo-code__message">
+                  <button class="promo-code__btn" type="button">Применить</button>
+
+                  <!-- Смс об ошибке/удаче :) - сюда вставляем и не забываем убрать кнопку -->
+                  <!-- <div class="promo-code__message">
                   <span>1B6D9FC</span>
                   <p>&mdash;&nbsp;купон не&nbsp;найден</p>
                 </div> -->
+                </div>
+
+                <button class="cheque__btn-submit" type="submit">Оформить заказ</button>
+
+                <!-- Политика конфиденциальности -->
+                <div class="cheque__privacy-policy privacy-policy">
+                  <p>Нажимая кнопку “Оформить заказ”, Вы соглашаетесь с
+                    <a href="#">политикой конфиденциальности.</a>
+                  </p>
+                </div>
+
               </div>
-
-              <button class="cheque__btn-submit" type="submit">Оформить заказ</button>
-
-              <!-- Политика конфиденциальности -->
-              <div class="cheque__privacy-policy privacy-policy">
-                <p>Нажимая кнопку “Оформить заказ”, Вы соглашаетесь с
-                  <a href="#">политикой конфиденциальности.</a>
-                </p>
-              </div>
-
             </div>
 
           </div>
@@ -556,6 +558,110 @@
 
 
   </main>
+
+  <footer class="footer">
+    <h2 class="visually-hidden">Подвал сайта</h2>
+    <div class="container">
+      <div class="footer__wrapper">
+
+        <!-- Доп. div для удобства позиционирования -->
+        <div class="footer__body">
+
+          <!-- Подписка на рассылку -->
+          <div class="footer__subscription subscription">
+            <p>Скидка <span>10</span>% за подписку на наши новости</p>
+
+            <div class="cheque__promo-code promo-code">
+              <form action="#" method="post">
+                <label>
+                  <input type="email" name="promotional-code" placeholder="example@mail.ru">
+                </label>
+
+                <button class="promo-code__btn" type="button">Подписаться</button>
+              </form>
+            </div>
+
+            <!-- Политика конфиденциальности -->
+            <div class="footer__privacy-policy privacy-policy">
+              <p>Нажимая кнопку “Подписаться”, Вы соглашаетесь с
+                <a href="#">политикой конфиденциальности.</a>
+              </p>
+            </div>
+          </div>
+
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a href="#">Каталог</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">О&nbsp;компании</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Магазины</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Новости</a>
+            </li>
+          </ul>
+
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a href="#">Оплата и доставка</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Условия возврата</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Бонусная система</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Подарочный сертификат</a>
+            </li>
+          </ul>
+
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a href="#">Telegram</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">WhatsApp</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Youtube</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">VK</a>
+            </li>
+          </ul>
+
+        </div>
+
+        <ul class="footer__list footer__list--bottom">
+          <li class="footer__item">
+            <a href="#">© All rights reserved</a>
+          </li>
+          <li class="footer__item">
+            <a href="#">Публичная оферта</a>
+          </li>
+          <li class="footer__item">
+            <a href="#">Политика конфиденциальности</a>
+          </li>
+          <li class="footer__item">
+            <div class="footer__copyright copyright">
+              <p>Сделано в студии</p>
+              <a href="#">
+                <svg width="21" height="21">
+                  <use xlink:href="img/sprite.svg#copyright-logo"></use>
+                </svg>
+                <span>5 УГЛОВ</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+
+      </div> <!-- /footer__wrapper -->
+    </div> <!-- /container -->
+  </footer>
 
   <!-- Смс о корректном/не корректном вводе промокода -->
   <template id="promo-code-message">

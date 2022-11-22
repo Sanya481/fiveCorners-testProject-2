@@ -16,7 +16,7 @@
     height: 100%;
     overflow: auto;
 
-    background-color: #000;
+    // background-color: #000;
     padding: 6rem 0 0;
 
     z-index: $mobile-menu;
@@ -26,6 +26,18 @@
     &.is-open {
       top: 0;
       transform: translateX(0);
+    }
+
+    /* Выезжающий фон - слева у мобильного меню */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 6rem;
+      right: 50%;
+
+      width: 50%;
+      height: 100%;
+      background-color: #000;
     }
   }
 }
@@ -45,6 +57,9 @@
   @media (max-width: 767px) {
     display: block;
     text-align: center;
+
+    position: relative;
+    z-index: 5;
 
     padding: 0 0 2rem;
 
