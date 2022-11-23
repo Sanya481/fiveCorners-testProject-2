@@ -68,7 +68,7 @@
                   <svg width="18" height="17">
                     <use xlink:href="img/sprite.svg#favourites"></use>
                   </svg>
-                  <span data-quantity-goods>4</span>
+                  <span data-total-quantity-in-favorites>4</span>
                 </a>
               </li>
               <li class="user-nav__item user-nav__item--cart">
@@ -76,7 +76,7 @@
                   <svg width="20" height="18">
                     <use xlink:href="img/sprite.svg#cart"></use>
                   </svg>
-                  <span data-quantity-goods>8</span>
+                  <span data-total-quantity-in-basket></span>
                 </a>
               </li>
             </ul>
@@ -112,22 +112,23 @@
     <section class="making-order">
       <div class="container">
 
-        <form action="#" method="post">
+        <form action="#" method="post" data-making-order-form>
           <!-- Обертка для позиционирования всех блоков -->
           <div class="making-order__wrapper">
 
-            <div class="making-order__header">
-              <h1>Оформление заказа</h1>
+            <div class="making-order__body">
 
-              <!-- Авторизация -->
-              <div class="making-order__authorization authorization-link">
-                <span>Есть аккаунт?</span>
-                <button type="button" data-modal-login-open>Войти</button>
+              <div class="making-order__header">
+                <h1>Оформление заказа</h1>
+
+                <!-- Авторизация -->
+                <div class="making-order__authorization authorization-link">
+                  <span>Есть аккаунт?</span>
+                  <button type="button" data-modal-login-open>Войти</button>
+                </div>
+
               </div>
 
-            </div>
-
-            <div class="making-order__body">
               <!-- Промежуточная стоимость -->
               <div class="making-order__approximate-cost approximate-cost">
                 <span>3</span>
@@ -205,24 +206,51 @@
                     </ul>
                   </div>
 
-                  <div class="product__quantity quantity-select" data-select-quantity>
-                    <!-- Цена -->
-                    <!-- <div>
-                    <p>10000</p>
-                    <span>&#8381;</span>
-                  </div> -->
+                  <div class="product__price-wrapper price">
+                    <!-- Доп. div для удобства центрирования эл-тов в блоке price и независимости от grid раскладки -->
+                    <div class="price__wrapper">
 
-                    <button class="quantity-select__minus" type="button" data-btn-minus></button>
-                    <input type="number" min="1" max="5" value="1" name="product-quantity" data-product-quantity>
-                    <button class="quantity-select__plus" type="button" data-btn-plus></button>
+                      <!-- Цена -->
+                      <ul class="price__list">
+                        <li class="price__item price__item--is-old">
+                          <!-- Доп. div - для перечеркивания текста -->
+                          <div class="price__old">
+                            <p>12&nbsp;000</p>
+                            <span>&#8381;</span>
+                          </div>
+                        </li>
+                        <li class="price__item">
+                          <p>10&nbsp;000</p>
+                          <span>&#8381;</span>
+                        </li>
+                      </ul>
 
-                    <!-- Цена -->
-                    <!-- <div>
-                    <p>20000</p>
-                    <span>&#8381;</span>
-                  </div> -->
+                      <div class="product__quantity quantity-select" data-counter-wrapper>
 
-                    <!-- Смс о превышении кол-ва вставится сюда -->
+                        <button class="quantity-select__minus" type="button" data-action="minus"></button>
+                        <input type="number" min="1" max="5" value="1" name="product-quantity" data-counter>
+                        <button class="quantity-select__plus" type="button" data-action="plus"></button>
+
+                        <!-- Смс о превышении кол-ва вставится сюда -->
+                      </div>
+
+                      <!-- Цена -->
+                      <ul class="price__list">
+                        <li class="price__item price__item--is-old">
+                          <!-- Доп. div - для перечеркивания текста -->
+                          <div class="price__old">
+                            <p>24&nbsp;000</p>
+                            <span>&#8381;</span>
+                          </div>
+                        </li>
+                        <li class="price__item">
+                          <p>20&nbsp;000</p>
+                          <span>&#8381;</span>
+                        </li>
+                      </ul>
+
+                    </div>
+
                   </div>
 
                   <a href="#" class="product__image">
@@ -316,25 +344,37 @@
                     </ul>
                   </div>
 
-                  <div class="product__quantity quantity-select" data-select-quantity>
-                    <!-- Цена -->
-                    <!-- <div>
-                    <p>10000</p>
-                    <span>&#8381;</span>
-                  </div> -->
+                  <div class="product__price-wrapper price">
 
-                    <button class="quantity-select__minus" type="button" data-btn-minus></button>
-                    <input type="number" min="1" max="5" value="1" name="product-quantity" data-product-quantity>
-                    <button class="quantity-select__plus" type="button" data-btn-plus></button>
+                    <div class="price__wrapper">
 
-                    <!-- Цена -->
-                    <!-- <div>
-                    <p>20000</p>
-                    <span>&#8381;</span>
-                  </div> -->
+                      <!-- Цена -->
+                      <ul class="price__list">
+                        <li class="price__item">
+                          <p>500</p>
+                          <span>&#8381;</span>
+                        </li>
+                      </ul>
 
-                    <!-- Смс о превышении кол-ва вставится сюда -->
-                  </div>
+                      <div class="product__quantity quantity-select" data-counter-wrapper>
+
+                        <button class="quantity-select__minus" type="button" data-action="minus"></button>
+                        <input type="number" min="1" max="5" value="1" name="product-quantity" data-counter>
+                        <button class="quantity-select__plus" type="button" data-action="plus"></button>
+
+                        <!-- Смс о превышении кол-ва вставится сюда -->
+                      </div>
+
+                       <!-- Цена -->
+                       <ul class="price__list">
+                        <li class="price__item">
+                          <p>500</p>
+                          <span>&#8381;</span>
+                        </li>
+                      </ul>
+
+                    </div> <!-- /price__wrapper -->
+                  </div> <!-- /product__price-wrapper -->
 
                   <a href="#" class="product__image">
                     <picture>
@@ -574,10 +614,10 @@
             <div class="cheque__promo-code promo-code">
               <form action="#" method="post">
                 <label>
-                  <input type="email" name="promotional-code" placeholder="example@mail.ru">
+                  <input type="email" name="mail-for-subscription" placeholder="example@mail.ru">
                 </label>
 
-                <button class="promo-code__btn" type="button">Подписаться</button>
+                <button class="promo-code__btn" type="submit">Подписаться</button>
               </form>
             </div>
 
@@ -662,6 +702,18 @@
       </div> <!-- /footer__wrapper -->
     </div> <!-- /container -->
   </footer>
+
+  <!-- Изменение цены -->
+  <!-- ! Немного не корректно сделано -->
+  <template id="old-price">
+    <li class="price__item price__item--is-old">
+      <!-- Доп. div - для перечеркивания текста -->
+      <div class="price__old">
+        <p>24&nbsp;000</p>
+        <span>&#8381;</span>
+      </div>
+    </li>
+  </template>
 
   <!-- Смс о корректном/не корректном вводе промокода -->
   <template id="promo-code-message">

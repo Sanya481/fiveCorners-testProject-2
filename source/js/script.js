@@ -66,6 +66,77 @@ if (window.matchMedia('(max-width: 767px)').matches) {
 }
 
 
+/* Реализация счетчика */
+
+/**
+ * Форма оформления заказа
+ */
+const makingOrderForm = document.querySelector('[data-making-order-form]');
+
+/* Запись общего кол-ва рядом с иконкой */
+let totalQuantityInBasket = document.querySelector('[data-total-quantity-in-basket]');
+
+
+/**
+ * Получение общего кол-ва
+ */
+const calculateTotalQuantity = () => {
+  /* Все счетчики - поля input  */
+  const counters = document.querySelectorAll('[data-counter]');
+
+  /* Общее количество */
+  let totalQuantity = 0;
+
+  /* Складываем общее кол-во */
+  counters.forEach((counter) => {
+    totalQuantity = totalQuantity + parseInt(counter.value);
+
+    /* В моб.версии может не быть подсчета обшего кол-ва - проверяем */
+    if (totalQuantityInBasket) {
+      totalQuantityInBasket.textContent = totalQuantity;
+    }
+  })
+}
+
+/* ! При загрузке страницы сразу проверяем общее кол-во */
+/* !!! В будущем можно убрать выполнение этой функции в моб.версии, чтобы ни делать лишних движений */
+calculateTotalQuantity();
+
+/**
+ * Изменение кол-ва при нажатии Плюс либо Минус
+ */
+const onSelectQuantityProduct = (evt) => {
+  /* Счётчик - поле input. */
+  // Вынес для глобальной области видимости
+  let counter;
+
+  if (evt.target.dataset.action === 'minus' || evt.target.dataset.action === 'plus') {
+    const counterWrapper = evt.target.closest('[data-counter-wrapper]');
+    counter = counterWrapper.querySelector('[data-counter]');
+  }
+
+  if (evt.target.dataset.action === 'minus') {
+    if (counter.valueAsNumber > 1) {
+      counter.value--;
+
+      calculateTotalQuantity();
+    }
+  }
+
+  if (evt.target.dataset.action === 'plus') {
+      if (counter.valueAsNumber < parseInt(counter.max)) {
+        counter.value++;
+
+        calculateTotalQuantity();
+      }
+    }
+  }
+
+  if (makingOrderForm) {
+    makingOrderForm.addEventListener('click', onSelectQuantityProduct);
+  }
+
+
 
 // const navMain = document.querySelector('.main-nav');
 // const navToggle = document.querySelector('.main-nav__toggle');
