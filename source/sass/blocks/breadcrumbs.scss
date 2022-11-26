@@ -1,7 +1,7 @@
 .breadcrumbs {
   margin-bottom: 4rem;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     margin-bottom: 3.2rem;
   }
 }

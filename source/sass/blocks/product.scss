@@ -60,6 +60,13 @@
   grid-column: 3/4;
 }
 
+.product__price-wrapper {
+  @include breakpoint($vp-767) {
+    grid-column: 1/-1;
+    grid-row: 3/4;
+  }
+}
+
 // .product__description h3 {
 //   margin: 0 0 1.5rem;
 // }

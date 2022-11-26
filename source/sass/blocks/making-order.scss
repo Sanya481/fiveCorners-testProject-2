@@ -1,7 +1,8 @@
 /* Позиционирование блоков */
 .making-order__wrapper {
   display: grid;
-  grid-template-columns: 1fr 400px;
+  // grid-template-columns: 1fr 400px;
+  grid-template-columns: 63.3% 33.4%;
   // grid-template-rows: 42px;
   column-gap: 4rem;
 

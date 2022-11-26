@@ -1,5 +1,5 @@
 .payment {
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     margin: 0 0 4rem;
   }
 }

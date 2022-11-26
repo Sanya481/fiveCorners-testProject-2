@@ -12,7 +12,7 @@
   column-gap: 116px;
   margin: 0 0 10rem 0;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     display: block;
     margin-bottom: 5rem;
   }
@@ -27,7 +27,7 @@
 
   flex-shrink: 0;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     margin-bottom: 2.5rem;
   }
 }
@@ -39,7 +39,7 @@
     margin-bottom: 0;
   }
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     margin-bottom: 0;
   }
 }
@@ -50,7 +50,7 @@
   color: #000;
   text-decoration: none;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     display: block;
     padding: 0.5rem 0;
   }
@@ -61,7 +61,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     display: block;
   }
 

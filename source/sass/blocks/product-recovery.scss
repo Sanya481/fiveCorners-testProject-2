@@ -9,7 +9,7 @@
 
   padding: 1.5rem 1.5rem 1.5rem 2.5rem;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     font-size: 1.4rem;
     line-height: 1.3;
   }
@@ -43,7 +43,7 @@
   line-height: 1.3;
   color: #000;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     padding-left: 0;
   }
 }

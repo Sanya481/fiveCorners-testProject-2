@@ -2,7 +2,7 @@
   border-bottom: 0.5px solid #C8C8C8;
   margin-bottom: 5rem;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     border-bottom: none;
     margin-bottom: 2.5rem;
 
@@ -49,7 +49,7 @@
 
   padding: 2.5rem 0;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     padding: 2.5rem 0 0;
   }
 }

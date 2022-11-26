@@ -1,5 +1,5 @@
 .user-nav {
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     display: inline-block;
     vertical-align: middle;
   }
@@ -18,7 +18,7 @@
 .user-nav__item {
   display: block;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     display: none;
 
     &--cart {
@@ -36,7 +36,7 @@
 
   position: relative;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     &--cart {
       width: 2.8rem;
       height: 2.8rem;
@@ -76,7 +76,7 @@
 
   pointer-events: none;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     display: none;
   }
 }

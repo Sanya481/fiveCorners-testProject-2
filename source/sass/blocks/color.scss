@@ -2,7 +2,9 @@
   @include list-reset;
 
   display: flex;
+  flex-wrap: wrap;
   column-gap: 1rem;
+  row-gap: 1rem;
 
   padding: 0.3rem 0;
 }

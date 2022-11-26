@@ -8,7 +8,7 @@
 
   padding: 2rem 0;
 
-  @media (max-width: 767px) {
+  @include breakpoint($vp-767) {
     font-size: 2rem;
     line-height: 1.2;
 

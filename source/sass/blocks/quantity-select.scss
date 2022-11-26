@@ -12,8 +12,8 @@
   position: relative;
 
   @include breakpoint($vp-767) {
-    grid-column: 1/-1;
-    grid-row: 3/4;
+    // grid-column: 1/-1;
+    // grid-row: 3/4;
     // justify-self: center;
   }
 }
