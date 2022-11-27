@@ -7,7 +7,7 @@
 
   fill: #000;
 
-  transition: fill 0.3s linear;
+  // transition: fill 0.3s linear;
 
   @include breakpoint($vp-767) {
 
@@ -22,7 +22,7 @@
 
     &:hover,
     &:focus {
-      fill: #000000;
+      fill: #cc7e5e;
     }
 
     &:active {

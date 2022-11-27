@@ -23,6 +23,15 @@
   background-color: #F1F1F1;
 
   cursor: pointer;
+
+   // Эффекты при наведении в десктопной версии
+   @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      background-color: #a49898;
+    }
+  }
 }
 
 .size input:checked+label {

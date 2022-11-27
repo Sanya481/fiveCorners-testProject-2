@@ -65,6 +65,22 @@ if (window.matchMedia('(max-width: 1200px)').matches) {
   }
 }
 
+/* Показ количества товара в корзине */
+const checkProductsQuantity = () => {
+  // Эл-т для вставки количества
+  const totalQuantity = document.querySelector('[data-total-quantity]');
+  // Общее кол-во товаров
+  const productsList = document.querySelectorAll('[data-product-wrapper]').length;
+
+  totalQuantity.textContent = productsList;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+
+  checkProductsQuantity();
+})
+
+
 
 /* Реализация счетчика */
 
@@ -255,10 +271,13 @@ if (addressBlock) {
 /* Подключение карты на сайт и поиск адреса введенного пользователем */
 
 const map = document.querySelector('[data-map]');
+const addressSearchBtn = document.querySelector('[data-address-btn]');
 
 // Функция ymaps.ready() будет вызвана, когда
 // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
-ymaps.ready(init);
+// ymaps.ready(init);
+
+const center = [55.76, 37.64];
 
 function init() {
   // Создание карты.
@@ -267,17 +286,19 @@ function init() {
     // Порядок по умолчанию: «широта, долгота».
     // Чтобы не определять координаты центра карты вручную,
     // воспользуйтесь инструментом Определение координат.
-    center: [55.76, 37.64],
+    center: center,
     // Уровень масштабирования. Допустимые значения:
     // от 0 (весь мир) до 19.
     zoom: 7
   });
 
+
+
   function onGetAddress(evt) {
     const addressBlock = evt.target.closest('[data-address-block]');
     const addressField = addressBlock.querySelector('[data-address-field]').value;
 
-    // Поиск координат центра Нижнего Новгорода.
+    // Поиск координат .
     ymaps.geocode(addressField, {
       /**
        * Опции запроса
@@ -362,10 +383,151 @@ function init() {
     });
   }
 
+  // !! Опции !!
+  // // удаляем геолокацию
+  // myMap.controls.remove('geolocationControl');
+  // // удаляем поиск
+  // myMap.controls.remove('searchControl');
+  // // удаляем контроль трафика
+  // myMap.controls.remove('trafficControl');
+  // // удаляем тип
+  // myMap.controls.remove('typeSelector');
+  // // удаляем кнопку перехода в полноэкранный режим
+  // myMap.controls.remove('fullscreenControl');
+  //  // удаляем контрол зуммирования
+  //  myMap.controls.remove('zoomControl');
+  //  // удаляем контрол правил
+  // myMap.controls.remove('rulerControl');
+  // // отключаем скролл карты (опционально)
+  // myMap.behaviors.disable(['scrollZoom']);
+
 
   if (addressSearchBtn) {
     addressSearchBtn.addEventListener('click', onGetAddress)
   }
 
 }
+
+/* Dadata - jquery плагин*/
+// API-ключ
+const token = "589b8e7dc737a4e8fc700bba004fb2a537b21120";
+
+
+// $(document).ready(function () {
+
+//   /* Адрес */
+//   $("[data-address-field]").suggestions({
+//     token: token,
+//     type: "ADDRESS",
+//     /* Вызывается, когда пользователь выбирает одну из подсказок */
+//     onSelect: function (suggestion) {
+//       console.log(suggestion);
+//     }
+//   });
+
+//   /* Имя */
+//   $("[data-name]").suggestions({
+//     token: token,
+//     type: "NAME",
+//     params: {
+//       parts: ["NAME"]
+//     },
+//     /* Вызывается, когда пользователь выбирает одну из подсказок */
+//     onSelect: function (suggestion) {
+//       console.log(suggestion);
+//     }
+//   });
+
+//   /* Фамилия */
+//   $("[data-surname]").suggestions({
+//     token: token,
+//     type: "NAME",
+//     params: {
+//       parts: ["SURNAME"]
+//     },
+//     /* Вызывается, когда пользователь выбирает одну из подсказок */
+//     onSelect: function (suggestion) {
+//       console.log(suggestion);
+//     }
+//   });
+
+//   /* Почта */
+//   $("[data-mail]").suggestions({
+//     token: token,
+//     type: "EMAIL",
+//     /* Вызывается, когда пользователь выбирает одну из подсказок */
+//     onSelect: function (suggestion) {
+//       console.log(suggestion);
+//     }
+//   });
+
+//   /* Подписка на рассылку */
+//   $("[data-subscription-field]").suggestions({
+//     token: token,
+//     type: "EMAIL",
+//     /* Вызывается, когда пользователь выбирает одну из подсказок */
+//     onSelect: function (suggestion) {
+//       console.log(suggestion);
+//     }
+//   });
+// })
+
+/* Удаление/Восстановление товара */
+
+// Копирование шаблона - восстановление товара
+const recoveryTemplate = document.querySelector('#recovery-item')
+  .content
+  .querySelector('[data-product-recovery]');
+
+
+/* В принципе можно к счетчику прикрепиться, чтобы второй обработчик ни вешать на форму, но не стал смешивать */
+const onRemoveItem = (evt) => {
+  // Удаление товара
+  if (evt.target.matches('[data-delete-product]')) {
+    // Секция для вставки
+    const productWrapper = evt.target.closest('[data-product-wrapper]');
+    // Сам товар
+    const product = productWrapper.querySelector('[data-product]');
+    // Название товара
+    const productTitle = product.querySelector('[data-product-title]').textContent;
+
+    // Скрываем эл-т
+    product.style.display = 'none';
+
+    const recoveryBlock = recoveryTemplate.cloneNode(true);
+    recoveryBlock.querySelector('[data-product-recovery-title]').textContent = productTitle;
+
+    // Вставляем после удаленного продукта
+    productWrapper.append(recoveryBlock);
+  }
+
+  // Полное удаление товара
+  if (evt.target.matches('[data-complete-remove-product]')) {
+    // Секция для вставки
+    const productWrapper = evt.target.closest('[data-product-wrapper]');
+    productWrapper.remove();
+    // Подсчет общего кол-ва товара
+    checkProductsQuantity();
+  }
+
+  // Восстановление
+  if (evt.target.matches('[data-recovery-item]')) {
+    // Секция для вставки
+    const productWrapper = evt.target.closest('[data-product-wrapper]');
+    // Сам товар
+    const product = productWrapper.querySelector('[data-product]');
+    // Блок - восстановление товара
+    const recoveryBlock = productWrapper.querySelector('[data-product-recovery]');
+
+    recoveryBlock.remove();
+    product.style.display = 'grid';
+  }
+
+}
+
+if (makingOrderForm) {
+  makingOrderForm.addEventListener('click', onRemoveItem);
+}
+
+
 

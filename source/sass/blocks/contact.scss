@@ -127,10 +127,11 @@ h2 {
   transition: all 0.3s linear;
 }
 
-.contact__field input:focus+label,
-.contact__field input:not(:placeholder-shown)+label,
-.contact__field textarea:focus+label,
-.contact__field textarea:not(:placeholder-shown)+label {
+/* Комбинатор '~' выбирает элементы, которые находятся на этом же уровне вложенности, после указанного элемента, с тем же родителем. */
+.contact__field input:focus~label,
+.contact__field input:not(:placeholder-shown)~label,
+.contact__field textarea:focus~label,
+.contact__field textarea:not(:placeholder-shown)~label {
   font-size: 1.2rem;
   line-height: 1.25;
   top: -4%;

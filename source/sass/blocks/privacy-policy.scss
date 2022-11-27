@@ -16,6 +16,26 @@
 .privacy-policy a {
   color: inherit;
   text-decoration: underline;
+
+  transition: text-decoration 0.3s linear;
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      color: #cc7e5e;
+      text-decoration: none;
+    }
+
+    &:active {
+      color: #f68050;
+    }
+  }
+
+  &:active {
+    color: #f68050;
+  }
 }
 
 .footer__privacy-policy.privacy-policy {

@@ -80,3 +80,23 @@
   right: 0;
   background-color: green;
 }
+
+.delivery label:hover p {
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      color: #cc7e5e;
+    }
+
+    &:active {
+      color: #f68050;
+    }
+  }
+
+  &:active {
+    color: #f68050;
+  }
+}

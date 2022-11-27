@@ -37,6 +37,7 @@
 
     display: none;
   }
+
 }
 
 .color__black label {
@@ -53,4 +54,13 @@
 
 .color input:checked+label::before {
   display: block;
+}
+
+// Эффекты при наведении в десктопной версии
+@media (min-width: 1200px) {
+  .color label:hover::before,
+  .color label:focus::before {
+    display: block;
+    opacity: 0.5;
+  }
 }

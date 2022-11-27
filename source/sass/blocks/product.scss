@@ -143,4 +143,27 @@
   &::before {
     transform: translate(-50%, -50%) rotate(-45deg);
   }
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover::after,
+    &:focus::after,
+    &:hover::before,
+    &:focus::before {
+      background-color: #d75757;
+    }
+
+    &:active::after,
+    &:active::before {
+      background-color: #f00;
+    }
+  }
+
+  &:active::after,
+  &:active::before {
+    background-color: #f00;
+  }
 }
+
+

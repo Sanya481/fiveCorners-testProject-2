@@ -41,9 +41,32 @@
 
     padding: 4px;
   }
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      color: #cc7e5e;
+    }
+
+    &:hover::before,
+    &:focus::before {
+      background-color: rgba(#000, 40%);
+      background-clip: content-box;
+    }
+
+    &:active {
+      color: #f68050;
+    }
+  }
+
+  &:active {
+    color: #f68050;
+  }
 }
 
-.payment__item input:checked + label::before {
+.payment__item input:checked+label::before {
   background-color: #000;
   /* Свойство background-clip определяет, в каких областях будет находиться фоновая картинка и фоновый цвет блока. */
   /* content-box — фон заполняет только контентную область, но не заходит во внутренний отступ и под рамку */

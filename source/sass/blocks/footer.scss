@@ -54,6 +54,23 @@
     display: block;
     padding: 0.5rem 0;
   }
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      color: #cc7e5e;
+    }
+
+    &:active {
+      color: #f68050;
+    }
+  }
+
+  &:active {
+    color: #f68050;
+  }
 }
 
 .footer__list.footer__list--bottom {
@@ -69,6 +86,21 @@
 
 .footer__list.footer__list--bottom a {
   color: #6E6E6E;
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      color: #000;
+    }
+
+    &:active {
+      color: #000;
+    }
+  }
+
+  &:active {
+    color: #000;
+  }
 }
-
-
