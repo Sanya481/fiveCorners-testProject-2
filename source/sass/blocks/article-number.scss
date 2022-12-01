@@ -1,6 +1,11 @@
 .article-number {
   display: flex;
   column-gap: 0.5rem;
+
+  @include breakpoint($vp-767) {
+    column-gap: 0.3rem;
+    margin: 0 0 5px;
+  }
 }
 
 .article-number h4,

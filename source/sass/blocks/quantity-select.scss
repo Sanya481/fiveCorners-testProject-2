@@ -12,6 +12,7 @@
   position: relative;
 
   @include breakpoint($vp-767) {
+    width: 146px;
     // grid-column: 1/-1;
     // grid-row: 3/4;
     // justify-self: center;
@@ -102,4 +103,19 @@
   text-align: center;
 
   z-index: 1;
+
+  @include breakpoint($vp-767) {
+    font-size: 16px;
+    line-height: 21px;
+  }
+}
+
+.quantity-select__minus {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.quantity-select__plus {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

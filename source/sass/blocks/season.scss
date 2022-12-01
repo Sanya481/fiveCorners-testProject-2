@@ -1,6 +1,10 @@
 .season {
   display: flex;
-  column-gap: 0.5rem
+  column-gap: 0.5rem;
+
+  @include breakpoint($vp-767) {
+    margin: 0 0 1.5rem;
+  }
 }
 
 .season h4,

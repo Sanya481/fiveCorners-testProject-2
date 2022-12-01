@@ -1,6 +1,6 @@
 .payment {
   @include breakpoint($vp-767) {
-    margin: 0 0 4rem;
+    margin: 0 0 4.2rem;
   }
 }
 
@@ -17,6 +17,10 @@
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @include breakpoint($vp-767) {
+    margin-bottom: 2.2rem;
   }
 }
 

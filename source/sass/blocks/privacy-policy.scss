@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+.cheque__privacy-policy.privacy-policy {
+  padding: 0 1.5rem 2.7rem;
+
+  @include breakpoint($vp-767) {
+    padding: 0 1.5rem 2.1rem;
+  }
+}
+
 .privacy-policy p,
 .footer__privacy-policy.privacy-policy p {
   font-size: 1.4rem;

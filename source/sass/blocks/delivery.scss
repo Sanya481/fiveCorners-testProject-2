@@ -1,18 +1,25 @@
 .delivery {
-  padding: 2rem 0;
-  border-top: 1px solid #C8C8C8;
-  border-bottom: 1px solid #C8C8C8;
-
+  margin: 0 2rem;
   /* Для кастомного checkbox */
   position: relative;
 
   @include breakpoint($vp-767) {
-    padding: 1.2rem 0;
+    margin: 0 1.5rem;
   }
 }
 
 .delivery label {
   cursor: pointer;
+
+  display: block;
+  padding: 2rem 0 2.5rem 0;
+  border-top: 1px solid #C8C8C8;
+  border-bottom: 1px solid #C8C8C8;
+
+  @include breakpoint($vp-767) {
+    padding: 1.4rem 0 1.1rem;
+  }
+
 }
 
 .delivery__info {
@@ -28,7 +35,7 @@
     font-size: 1.6rem;
     line-height: 1.3;
 
-    margin: 0 0 1rem;
+    margin: 0 0 0.7rem;
   }
 }
 

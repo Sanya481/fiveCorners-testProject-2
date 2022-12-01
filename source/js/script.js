@@ -99,9 +99,19 @@ let totalQuantityInBasket = document.querySelector('[data-total-quantity-in-bask
 const calculateTotalQuantity = () => {
   /* Все счетчики - поля input  */
   const counters = document.querySelectorAll('[data-counter]');
+  // Общее кол-во товаров
+  const productsList = document.querySelectorAll('[data-product-wrapper]').length;
+  // Счетчик товаров в корзине над иконкой
+  const totalQuantityInBasket = document.querySelector('[data-total-quantity-in-basket]');
+
 
   /* Общее количество */
   let totalQuantity = 0;
+
+  /* Если товаров нет в корзине - иконку над корзиной убираем */
+  if (productsList === 0) {
+    totalQuantityInBasket.style.opacity = 0;
+  }
 
   /* Складываем общее кол-во */
   counters.forEach((counter) => {
@@ -333,39 +343,39 @@ function init() {
       /**
        * Все данные в виде javascript-объекта.
        */
-      console.log('Все данные геообъекта: ', firstGeoObject.properties.getAll());
+      // console.log('Все данные геообъекта: ', firstGeoObject.properties.getAll());
       /**
        * Метаданные запроса и ответа геокодера.
        * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/GeocoderResponseMetaData.xml
        */
-      console.log('Метаданные ответа геокодера: ', res.metaData);
+      // console.log('Метаданные ответа геокодера: ', res.metaData);
       /**
        * Метаданные геокодера, возвращаемые для найденного объекта.
        * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/GeocoderMetaData.xml
        */
-      console.log('Метаданные геокодера: ', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData'));
+      // console.log('Метаданные геокодера: ', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData'));
       /**
        * Точность ответа (precision) возвращается только для домов.
        * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/precision.xml
        */
-      console.log('precision', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.precision'));
+      // console.log('precision', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.precision'));
       /**
        * Тип найденного объекта (kind).
        * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/kind.xml
        */
-      console.log('Тип геообъекта: %s', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.kind'));
-      console.log('Название объекта: %s', firstGeoObject.properties.get('name'));
-      console.log('Описание объекта: %s', firstGeoObject.properties.get('description'));
-      console.log('Полное описание объекта: %s', firstGeoObject.properties.get('text'));
+      // console.log('Тип геообъекта: %s', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.kind'));
+      // console.log('Название объекта: %s', firstGeoObject.properties.get('name'));
+      // console.log('Описание объекта: %s', firstGeoObject.properties.get('description'));
+      // console.log('Полное описание объекта: %s', firstGeoObject.properties.get('text'));
       /**
       * Прямые методы для работы с результатами геокодирования.
       * @see https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/GeocodeResult-docpage/#getAddressLine
       */
-      console.log('\nГосударство: %s', firstGeoObject.getCountry());
-      console.log('Населенный пункт: %s', firstGeoObject.getLocalities().join(', '));
-      console.log('Адрес объекта: %s', firstGeoObject.getAddressLine());
-      console.log('Наименование здания: %s', firstGeoObject.getPremise() || '-');
-      console.log('Номер здания: %s', firstGeoObject.getPremiseNumber() || '-');
+      // console.log('\nГосударство: %s', firstGeoObject.getCountry());
+      // console.log('Населенный пункт: %s', firstGeoObject.getLocalities().join(', '));
+      // console.log('Адрес объекта: %s', firstGeoObject.getAddressLine());
+      // console.log('Наименование здания: %s', firstGeoObject.getPremise() || '-');
+      // console.log('Номер здания: %s', firstGeoObject.getPremiseNumber() || '-');
 
       /**
        * Если нужно добавить по найденным геокодером координатам метку со своими стилями и контентом балуна, создаем новую метку по координатам найденной и добавляем ее на карту вместо найденной.
@@ -499,6 +509,9 @@ const onRemoveItem = (evt) => {
 
     // Вставляем после удаленного продукта
     productWrapper.append(recoveryBlock);
+
+    // Т.к. в разметке товар не удаляется до конца, то подсчет не получится
+    // calculateTotalQuantity();
   }
 
   // Полное удаление товара
@@ -506,8 +519,10 @@ const onRemoveItem = (evt) => {
     // Секция для вставки
     const productWrapper = evt.target.closest('[data-product-wrapper]');
     productWrapper.remove();
-    // Подсчет общего кол-ва товара
+    //Блок с приблизительной стоимостью - Подсчет общего кол-ва товара
     checkProductsQuantity();
+    // Иконка над корзиной - Подсчет общего кол-ва
+    calculateTotalQuantity();
   }
 
   // Восстановление
@@ -522,11 +537,35 @@ const onRemoveItem = (evt) => {
     recoveryBlock.remove();
     product.style.display = 'grid';
   }
-
 }
 
 if (makingOrderForm) {
   makingOrderForm.addEventListener('click', onRemoveItem);
+}
+
+
+/* Autoresize textarea для ввода адреса  */
+
+// Все поля которым нужен Autoresize
+const textareaField = document.querySelectorAll('[data-autoresize]');
+
+if (textareaField) {
+  textareaField.forEach((field) => {
+    // Высота по умолчанию, которую мы задали
+    let textareaFieldHeight = field.offsetHeight;
+
+    /**
+     * Autoresize textarea
+     */
+    const onAutoResize = (evt) => {
+      const textareaField = evt.target;
+
+      textareaField.style.height = `${textareaFieldHeight}px`;
+      textareaField.style.height = `${textareaField.scrollHeight}px`;
+    }
+
+    field.addEventListener('input', onAutoResize);
+  })
 }
 
 

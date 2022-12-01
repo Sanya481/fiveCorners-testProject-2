@@ -8,6 +8,14 @@
   }
 }
 
+.cheque__promo-code.promo-code {
+  margin: 0 2rem 1.7rem;
+
+  @include breakpoint($vp-767) {
+    margin: 0 1.6rem 1.2rem;
+  }
+}
+
 .promo-code input {
   font-family: "Helvetica", "Arial", sans-serif;
   font-size: 1.6rem;
@@ -16,7 +24,7 @@
   padding: 1.5rem 11.5rem 1.5rem 2rem;
 
   @include breakpoint($vp-767) {
-    padding: 1.2rem 8rem 1.2rem 1.6rem;
+    padding: 1rem 8rem 1rem 1.6rem;
   }
 }
 

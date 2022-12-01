@@ -1,23 +1,22 @@
 .cheque {
   width: 100%;
   max-width: 400px;
-  // height: 100%;
-  // min-height: 574px;
   border: 1px solid #6E6E6E;
-
-  padding: 3rem 2rem;
-
-  // position: absolute;
-  // top: 0;
-  // right: 0;
-
 
   @include breakpoint($vp-767) {
     width: 100%;
     max-width: none;
     min-height: 100%;
-    padding: 2.4rem 1.6rem;
+    // padding: 2.4rem 1.6rem;
     margin: 0 0 4rem;
+  }
+}
+
+.cheque__submit-block {
+  padding: 0 2rem;
+
+  @include breakpoint($vp-767) {
+    padding: 0 1.6rem;
   }
 }
 

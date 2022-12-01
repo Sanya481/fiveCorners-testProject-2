@@ -6,7 +6,12 @@
   column-gap: 0.5rem;
   row-gap: 1rem;
 
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
+
+  @include breakpoint($vp-767) {
+    column-gap: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .size label {

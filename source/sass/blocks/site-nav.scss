@@ -1,9 +1,12 @@
 .site-nav {
   display: block;
+  margin-right: 5rem;
 
   @include breakpoint($vp-767) {
     display: block;
     position: fixed;
+
+    margin-right: 0;
 
     /* Растягиваем на всю ширину и прижимаем к верху*/
     top: 0;

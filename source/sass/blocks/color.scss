@@ -7,6 +7,11 @@
   row-gap: 1rem;
 
   padding: 0.3rem 0;
+
+  @include breakpoint($vp-767) {
+    column-gap: 2rem;
+    margin-left: 2px;
+  }
 }
 
 .color label {
@@ -58,6 +63,7 @@
 
 // Эффекты при наведении в десктопной версии
 @media (min-width: 1200px) {
+
   .color label:hover::before,
   .color label:focus::before {
     display: block;

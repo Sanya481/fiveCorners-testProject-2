@@ -34,19 +34,14 @@
   @include breakpoint($vp-767) {
     display: block;
 
-    margin: 0 0 3.2rem;
+    margin: 0 0 3.6rem;
   }
 }
 
-.making-order__body {
-  // margin: 0 0 2rem;
-
-  // padding: 0 44rem 0 0;
-}
-
-.making-order__header h1 {
+.making-order__header h2 {
   font-size: 4rem;
   line-height: 1.05;
+  font-weight: 400;
 
   margin: 0;
 
@@ -66,7 +61,11 @@
 
   display: flex;
   flex-direction: column;
-  row-gap: 25px;
+  row-gap: 2.5rem;
+
+  @include breakpoint($vp-767) {
+    row-gap: 1.5rem;
+  }
 }
 
 .product__description h3 {
