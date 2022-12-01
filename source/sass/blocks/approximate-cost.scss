@@ -1,0 +1,18 @@
+.approximate-cost {
+  display: flex;
+  column-gap: 0.8rem;
+  flex-wrap: wrap;
+
+  font-size: 2.8rem;
+  line-height: 1.07;
+
+  margin: 0 0 2.7rem;
+
+  @include breakpoint($vp-767) {
+    margin: 0 0 2rem;
+  }
+}
+
+.approximate-cost p {
+  margin: 0;
+}

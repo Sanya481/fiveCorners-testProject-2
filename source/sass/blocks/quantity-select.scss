@@ -1,0 +1,121 @@
+.quantity-select {
+  display: flex;
+  justify-content: space-between;
+
+  width: 153px;
+  height: 42px;
+
+  background-color: #F1F1F1;
+  border-radius: 5px;
+
+  // Для смс об ошибке
+  position: relative;
+
+  @include breakpoint($vp-767) {
+    width: 146px;
+    // grid-column: 1/-1;
+    // grid-row: 3/4;
+    // justify-self: center;
+  }
+}
+
+// Рисуем плюс/минус с помощью css
+.quantity-select button {
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 100%;
+  padding: 0;
+
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background-color: #000;
+
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      background-color: #f68050;
+    }
+
+    &:active {
+      background-color: darken(#f68050, 20%);
+    }
+  }
+
+  &:active {
+    background-color: darken(#f68050, 20%);
+  }
+}
+
+// Не уверен, как лучше обращаться - с помощью класса или :last-child
+.quantity-select__plus::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  background-color: #000;
+
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.quantity-select button:disabled {
+  cursor: default;
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
+
+  &::after,
+  &::before {
+    background-color: #9f9f9f;
+  }
+}
+
+.quantity-select input {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+
+  width: 100%;
+  padding: 2px;
+
+  border: none;
+  background-color: #f1f1f1;
+  text-align: center;
+
+  z-index: 1;
+
+  @include breakpoint($vp-767) {
+    font-size: 16px;
+    line-height: 21px;
+  }
+}
+
+.quantity-select__minus {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.quantity-select__plus {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

@@ -1,9 +1,18 @@
 /* Позиционирование блоков */
 .making-order__wrapper {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  grid-template-rows: 42px;
+  // grid-template-columns: 1fr 400px;
+  grid-template-columns: 63.3% 33.4%;
+  // grid-template-rows: 42px;
   column-gap: 4rem;
+
+  margin-bottom: 5rem;
+
+  // position: relative;
+
+  @include breakpoint($vp-767) {
+    display: block;
+  }
 }
 
 .making-order__approximate-cost {
@@ -18,36 +27,45 @@
   display: flex;
   column-gap: 2rem;
 
-  // margin: 0 0 6rem;
+  // padding: 0 44rem 0 0;
+
+  margin: 0 0 6rem;
+
+  @include breakpoint($vp-767) {
+    display: block;
+
+    margin: 0 0 3.6rem;
+  }
 }
 
-.making-order__header h1 {
+.making-order__header h2 {
   font-size: 4rem;
   line-height: 1.05;
+  font-weight: 400;
 
   margin: 0;
-}
 
-/* approximate-cost */
+  @include breakpoint($vp-767) {
+    font-size: 2.8rem;
+    line-height: 1.07;
+    font-weight: 400;
 
-.approximate-cost {
-  display: flex;
-  column-gap: 0.4rem;
-
-  font-size: 2.8rem;
-  line-height: 1.07;
-
-  margin: 0 0 10px;
-}
-
-.approximate-cost p {
-  margin: 0;
+    margin: 0 0 1rem;
+  }
 }
 
 /* Товары */
 
 .making-order__product-list {
   @include list-reset;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+
+  @include breakpoint($vp-767) {
+    row-gap: 1.5rem;
+  }
 }
 
 .product__description h3 {
@@ -57,197 +75,6 @@
   margin: 0 0 1rem;
 }
 
-/* article-number */
-
-.article-number {
-  display: flex;
-  column-gap: 0.5rem;
-}
-
-.article-number h4,
-.article-number span {
-  font-size: 1.2rem;
-  line-height: 1.25;
-
-  margin: 0
-}
-
-.article-number h4 {
-  color: #6E6E6E;
-}
-
-.article-number span {
-  color: #000;
-}
-
-/* season */
-
-.season {
-  display: flex;
-  column-gap: 0.5rem
-}
-
-.season h4,
-.season p {
-  font-size: 1.2rem;
-  line-height: 1.25;
-
-  margin: 0
-}
-
-.season h4 {
-  color: #6E6E6E;
-}
-
-.season p {
-  color: #000;
-}
-
-
-/* size */
-.size {
-  @include list-reset;
-
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 0.5rem;
-  row-gap: 1rem;
-}
-
-.size label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 1.2rem;
-  line-height: 1.25rem;
-  width: 3rem;
-  height: 3rem;
-
-  border-radius: 0.6rem;
-  background-color: #F1F1F1;
-
-  cursor: pointer;
-}
-
-.size input:checked+label {
-  background-color: #000;
-  color: #fff;
-}
-
-.size input:disabled+label {
-  color: #C8C8C8;
-  cursor: default
-}
-
-/* color */
-
-.color {
-  @include list-reset;
-
-  display: flex;
-  column-gap: 1rem;
-
-  padding: 0.3rem 0;
-}
-
-.color label {
-  display: block;
-  width: 1.6rem;
-  height: 1.6rem;
-
-  border-radius: 50%;
-
-  cursor: pointer;
-
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-
-    width: 2.2rem;
-    height: 2.2rem;
-
-    border-radius: 50%;
-    background-color: transparent;
-    border: 1px solid #000;
-    z-index: -1;
-
-    display: none;
-  }
-}
-
-.color__black label {
-  background-color: #444444;
-}
-
-.color__blue label {
-  background-color: #106DA1;
-}
-
-.color__gray label {
-  background-color: #AE6D0C;
-}
-
-.color input:checked+label::before {
-  display: block;
-}
-
-/* product */
-
-.product {
-  display: grid;
-  grid-template-columns: 130px 1fr 1fr min-content;
-  column-gap: 10px;
-
-  padding: 2.5rem 0;
-  border-top: 0.5px solid #C8C8C8;
-  border-bottom: 0.5px solid #C8C8C8;
-}
-
-.product__description {
-  grid-column: 2/3;
-  max-width: 20rem;
-}
-
-.product__description a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.product__description h3 {
-  margin: 0 0 1.5rem;
-}
-
-.product__article-number,
-.product__season,
-.product__size {
-  margin: 0 0 1rem;
-}
-
-.product__image {
-  grid-column: 1/2;
-  width: 130px;
-  height: 160px;
-  grid-row: 1/-1;
-}
-
-.product__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.product__remove {
-  width: 20px;
-  height: 20px;
-}
-
-
 /* cheque */
 
 .making-order__cheque {
@@ -255,137 +82,9 @@
   grid-column: 2/-1;
 }
 
-/* quantity-select */
+/* recovery */
 
-.quantity-select {
-  display: flex;
-  justify-content: space-between;
-
-  width: 153px;
-  height: 42px;
-
-  background-color: #F1F1F1;
-  border-radius: 5px;
-
-  // Для смс об ошибке
-  position: relative;
-}
-
-// Рисуем плюс/минус с помощью css
-.quantity-select button {
-  flex-shrink: 0;
-
-  width: 42px;
-  height: 100%;
-  padding: 0;
-
-  border: none;
-  background-color: #f1f1f1;
-  cursor: pointer;
-
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 12px;
-    height: 2px;
-    background-color: #000;
-
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  // Эффекты при наведении в десктопной версии
-  @media (min-width: 1200px) {
-
-    &:hover,
-    &:focus {
-      background-color: #f68050;
-    }
-
-    &:active {
-      background-color: darken(#f68050, 20%);
-    }
-  }
-
-  &:active {
-    background-color: darken(#f68050, 20%);
-  }
-}
-
-// Не уверен, как лучше обращаться - с помощью класса или :last-child
-.quantity-select__plus::before {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 2px;
-  background-color: #000;
-
-  left: 50%;
-  transform: translateX(-50%) rotate(90deg);
-}
-
-.quantity-select button:disabled {
-  cursor: default;
-  background-color: transparent;
-
-  &:hover,
-  &:focus {
-    background-color: transparent;
-  }
-
-  &::after,
-  &::before {
-    background-color: #9f9f9f;
-  }
-}
-
-.quantity-select input {
-  font-family: "Helvetica", "Arial", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 23px;
-
+.recovery {
   width: 100%;
-  padding: 2px;
-
-  border: none;
-  background-color: #f1f1f1;
-  text-align: center;
-
-  z-index: 1;
-}
-
-/* product__remove-btn */
-.product__remove-btn {
-  position: relative;
-  width: 22px;
-  height: 22px;
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-
-  transition: border-radius 0.3s ease-in-out;
-
-  &::after,
-  &::before {
-    content: "";
-    position: absolute;
-    width: 13px;
-    height: 2px;
-    background-color: #000;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &::after {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-
-  &::before {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
+  height: 50px;
 }

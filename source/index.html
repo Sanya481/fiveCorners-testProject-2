@@ -5,17 +5,18 @@
   <meta charset="UTF-8">
   <title>Тестовое задание на HTML-верстальщика в компанию Пять углов</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/css/suggestions.min.css" />
   <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body class="page__body">
 
-  <header class="header">
+  <header class="header" data-header>
     <div class="container">
       <div class="header__wrapper">
 
         <!-- Навигация по сайту -->
-        <nav class="header__nav site-nav">
+        <nav class="header__nav site-nav" data-mobile-nav>
           <ul class="site-nav__list">
             <li class="site-nav__item">
               <a href="#">Каталог</a>
@@ -27,56 +28,70 @@
               <a href="#">Магазины</a>
             </li>
           </ul>
+          <ul class="site-nav__list site-nav__list--mobile">
+            <li class="site-nav__item">
+              <a href="#">Профиль</a>
+            </li>
+            <li class="site-nav__item">
+              <a href="#">Избранное</a>
+            </li>
+          </ul>
         </nav>
 
         <!-- Логотип -->
-        <a href="#" class="header__logo logo" aria-label="Логотип сайта">
+        <a href="#" class="header__logo logo" data-logo aria-label="Логотип сайта">
           <svg width="100" height="22">
             <use xlink:href="img/sprite.svg#logo"></use>
           </svg>
         </a>
 
         <!-- Пользовательская навигация -->
-        <nav class="header__nav user-nav">
-          <ul class="user-nav__list">
-            <li class="user-nav__item">
-              <a href="#" class="user-nav__link" aria-label="Поиск по сайту">
-                <svg width="18" height="18">
-                  <use xlink:href="img/sprite.svg#search-icon"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="user-nav__item">
-              <a href="#" class="user-nav__link" aria-label="Профиль пользователя">
-                <svg width="20" height="19">
-                  <use xlink:href="img/sprite.svg#profile"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="user-nav__item">
-              <a href="#" class="user-nav__link" aria-label="Избранные товары">
-                <svg width="18" height="17">
-                  <use xlink:href="img/sprite.svg#favourites"></use>
-                </svg>
-                <span data-quantity-goods>4</span>
-              </a>
-            </li>
-            <li class="user-nav__item">
-              <a href="#" class="user-nav__link" aria-label="Корзина">
-                <svg width="20" height="18">
-                  <use xlink:href="img/sprite.svg#cart"></use>
-                </svg>
-                <span data-quantity-goods>8</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <!-- Дополнительный div для удобства раскладки в мобилке -->
+        <div class="header__nav-block">
+          <nav class="header__nav user-nav">
+            <ul class="user-nav__list">
+              <li class="user-nav__item">
+                <a href="#" class="user-nav__link" aria-label="Поиск по сайту">
+                  <svg width="18" height="18">
+                    <use xlink:href="img/sprite.svg#search-icon"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="user-nav__item">
+                <a href="#" class="user-nav__link" aria-label="Профиль пользователя">
+                  <svg width="20" height="19">
+                    <use xlink:href="img/sprite.svg#profile"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="user-nav__item">
+                <a href="#" class="user-nav__link" aria-label="Избранные товары">
+                  <svg width="18" height="17">
+                    <use xlink:href="img/sprite.svg#favourites"></use>
+                  </svg>
+                  <span data-total-quantity-in-favorites>4</span>
+                </a>
+              </li>
+              <li class="user-nav__item user-nav__item--cart">
+                <a href="#" class="user-nav__link user-nav__link--cart" aria-label="Корзина">
+                  <svg width="20" height="18">
+                    <use xlink:href="img/sprite.svg#cart"></use>
+                  </svg>
+                  <span data-total-quantity-in-basket></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
 
+          <!-- Бургер в мобилке -->
+          <button class="header__burger burger" type="button" data-burger aria-label="Закрыть/открыть меню"></button>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
+    <h1 class="visually-hidden">Страница для оформления заказа</h1>
 
     <!-- Хлебные крошки -->
     <section class="breadcrumbs">
@@ -99,259 +114,635 @@
     <section class="making-order">
       <div class="container">
 
-        <form action="#" method="post">
+        <form action="#" method="post" enctype="multipart/form-data" data-making-order-form>
           <!-- Обертка для позиционирования всех блоков -->
           <div class="making-order__wrapper">
 
-            <div class="making-order__header">
-              <h1>Оформление заказа</h1>
+            <div class="making-order__body">
 
-              <!-- Авторизация -->
-              <div class="making-order__authorization authorization-link">
-                <span>Есть аккаунт?</span>
-                <button type="button" data-modal-login-open>Войти</button>
+              <div class="making-order__header">
+                <h2>Оформление заказа</h2>
+
+                <!-- Авторизация -->
+                <div class="making-order__authorization authorization-link">
+                  <span>Есть аккаунт?</span>
+                  <button type="button" data-modal-login-open>Войти</button>
+                </div>
+
+              </div> <!-- /making-order__header -->
+
+              <!-- Промежуточная стоимость -->
+              <!-- Старался символ рубля вынести, как отдельный эл-т, чтобы удобнее было работать из js -->
+              <div class="making-order__approximate-cost approximate-cost">
+                <span data-total-quantity>3</span>
+                <p>товара на&nbsp;сумму</p>
+                <span>25&nbsp;000</span>
+                <span>&#8381;</span>
               </div>
 
-            </div>
+              <!-- Товары -->
+              <ul class="making-order__product-list" data-product-list>
+                <li class="making-order__product-item" data-product-wrapper>
 
-            <!-- Промежуточная стоимость -->
-            <div class="making-order__approximate-cost approximate-cost">
-              <span>3</span>
-              <p>товара на&nbsp;сумму</p>
-              <span>25000</span>
-              <span>&#8381;</span>
-            </div>
+                  <!-- Доп. div для простоты удаления и восстановления товара -->
+                  <div class="making-order__product product" data-product>
+                    <a href="#" class="product__title">
+                      <h3 data-product-title>Утепленная стеганная куртка женская Top Hills</h3>
+                    </a>
 
-            <!-- Товары -->
-            <ul class="making-order__product-list" data-product-list>
-              <li class="making-order__product-item product" data-product>
+                    <div class="product__description">
 
-                <div class="product__description">
-                  <a href="#">
-                    <h3>Утепленная стеганная куртка женская Top Hills</h3>
-                  </a>
+                      <div class="product__article-number article-number">
+                        <h4>Артикул</h4>
+                        <span>512-05</span>
+                      </div>
 
-                  <div class="product__article-number article-number">
-                    <h4>Артикул</h4>
-                    <span>512-05</span>
+                      <div class="product__season season">
+                        <h4>Сезон</h4>
+                        <p>Осень-зима</p>
+                      </div>
+
+                      <!-- Выбор размера -->
+                      <!-- Пояснения к сокращениям -->
+                      <!-- ps - product-size -->
+                      <ul class="product__size size">
+                        <li>
+                          <input id="ps-xs" class="visually-hidden" type="radio" name="ps-1" value="extra-small">
+                          <label for="ps-xs">XS</label>
+                        </li>
+                        <li>
+                          <input id="ps-s" class="visually-hidden" type="radio" name="ps-1" value="small">
+                          <label for="ps-s">S</label>
+                        </li>
+                        <li>
+                          <input id="ps-m" class="visually-hidden" type="radio" name="ps-1" value="medium" checked>
+                          <label for="ps-m">M</label>
+                        </li>
+                        <li>
+                          <input id="ps-l" class="visually-hidden" type="radio" name="ps-1" value="large">
+                          <label for="ps-l">L</label>
+                        </li>
+                        <li>
+                          <input id="ps-xl" class="visually-hidden" type="radio" name="ps-1" value="extra-large">
+                          <label for="ps-xl">XL</label>
+                        </li>
+                      </ul>
+
+                      <!-- Выбор цвета -->
+                      <!-- Пояснения к сокращениям -->
+                      <!-- pc - product-color -->
+                      <ul class="product__color color">
+                        <li class="color__black">
+                          <input class="visually-hidden" id="pc-1-black" type="radio" name="pc-1" value="black" checked>
+                          <label for="pc-1-black"></label>
+                        </li>
+                        <li class="color__blue">
+                          <input class="visually-hidden" id="pc-1-blue" type="radio" name="pc-1" value="blue">
+                          <label for="pc-1-blue"></label>
+                        </li>
+                        <li class="color__gray">
+                          <input class="visually-hidden" id="pc-1-gray" type="radio" name="pc-1" value="gray">
+                          <label for="pc-1-gray"></label>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="product__cost-wrapper cost">
+                      <!-- Доп. div для удобства центрирования эл-тов в блоке cost и независимости от grid раскладки -->
+                      <div class="cost__wrapper">
+
+                        <!-- Цена -->
+                        <ul class="cost__list">
+                          <li class="cost__item cost__item--is-old">
+                            <!-- Доп. div - для перечеркивания текста -->
+                            <div class="cost__old">
+                              <p>12&nbsp;000</p>
+                              <span>&#8381;</span>
+                            </div>
+                          </li>
+                          <li class="cost__item">
+                            <p>10&nbsp;000</p>
+                            <span>&#8381;</span>
+                          </li>
+                        </ul>
+
+                        <div class="cost__quantity-block quantity-select" data-counter-wrapper>
+
+                          <button class="quantity-select__minus" type="button" data-action="minus"></button>
+                          <input type="number" min="1" max="5" value="1" name="product-quantity-1" data-counter>
+                          <button class="quantity-select__plus" type="button" data-action="plus"></button>
+
+                          <!-- Смс о превышении кол-ва вставится сюда -->
+                        </div>
+
+                        <!-- Цена -->
+                        <ul class="cost__list">
+                          <li class="cost__item cost__item--is-old">
+                            <!-- Доп. div - для перечеркивания текста -->
+                            <div class="cost__old">
+                              <p>24&nbsp;000</p>
+                              <span>&#8381;</span>
+                            </div>
+                          </li>
+                          <li class="cost__item">
+                            <p>20&nbsp;000</p>
+                            <span>&#8381;</span>
+                          </li>
+                        </ul>
+
+                      </div>
+
+                    </div>
+
+                    <a href="#" class="product__image">
+                      <picture>
+                        <!-- Размер фотографии 1x - 130 * 160, 2x - 260 * 320 -->
+                        <!-- webp 1x, 2x -->
+                        <source type="img/webp" srcset="img/products/product-1.webp, img/products/product-1@2x.webp 2x">
+                        <!-- jpg 1x, 2x -->
+                        <img src="img/products/product-1.jpg" srcset="img/products/product-1@2x.jpg 2x" width="130"
+                          height="160" alt="Товар, который вам точно понравится">
+                      </picture>
+                    </a>
+
+                    <button class="product__remove-btn" type="button" data-delete-product
+                      aria-label="Удалить товар"></button>
                   </div>
 
-                  <div class="product__season season">
-                    <h4>Сезон</h4>
-                    <p>Осень-зима</p>
+                  <!-- Сюда вставляется блок - восстановление товара -->
+                </li>
+
+                <!-- Восстановление товара -->
+                <div class="product-recovery">
+                  <!-- Доп. div для удобства раскладки -->
+                  <div>
+                    <p>Товар <a href="#">Наименование товара</a> был удален из корзины.</p>
+                    <button class="product-recovery__recovery-btn" type="button">Восстановить</button>
                   </div>
 
-                  <!-- Выбор размера -->
-                  <ul class="product__size size">
-                    <li>
-                      <input id="size-xs" class="visually-hidden" type="radio" name="size" value="extra-small">
-                      <label for="size-xs">XS</label>
-                    </li>
-                    <li>
-                      <input id="size-s" class="visually-hidden" type="radio" name="size" value="small">
-                      <label for="size-s">S</label>
-                    </li>
-                    <li>
-                      <input id="size-m" class="visually-hidden" type="radio" name="size" value="medium" checked>
-                      <label for="size-m">M</label>
-                    </li>
-                    <li>
-                      <input id="size-l" class="visually-hidden" class="visually-hidden" type="radio" name="size"
-                        value="large">
-                      <label for="size-l">L</label>
-                    </li>
-                    <li>
-                      <input id="size-xl" class="visually-hidden" type="radio" name="size" value="extra-large">
-                      <label for="size-xl">XL</label>
-                    </li>
-                  </ul>
+                  <button class="product-recovery__close-btn" data-complete-remove-product type="button"
+                    aria-label="Закрыть окно восстановления товара"></button>
+                </div>
 
-                  <!-- Выбор цвета -->
-                  <ul class="product__color color">
-                    <li class="color__black">
-                      <input class="visually-hidden" id="color-black" type="radio" name="color" value="black" checked>
-                      <label for="color-black"></label>
+                <li class="making-order__product-item" data-product-wrapper>
+
+                  <!-- Доп. div для простоты удаления и восстановления товара -->
+                  <div class="making-order__product product" data-product>
+                    <a href="#" class="product__title">
+                      <h3 data-product-title>Вязанная шапка Zolla</h3>
+                    </a>
+
+                    <div class="product__description">
+
+                      <div class="product__article-number article-number">
+                        <h4>Артикул</h4>
+                        <span>891-256</span>
+                      </div>
+
+                      <div class="product__season season">
+                        <h4>Сезон</h4>
+                        <p>Демисезон</p>
+                      </div>
+
+                      <!-- Выбор размера -->
+                      <ul class="product__size size">
+                        <li>
+                          <input id="ps-xs-2" class="visually-hidden" type="radio" name="ps-2" value="extra-small">
+                          <label for="ps-xs-2">XS</label>
+                        </li>
+                        <li>
+                          <input id="ps-s-2" class="visually-hidden" type="radio" name="ps-2" value="small">
+                          <label for="ps-s-2">S</label>
+                        </li>
+                        <li>
+                          <input id="ps-m-2" class="visually-hidden" type="radio" name="ps-2" value="medium" checked>
+                          <label for="ps-m-2">M</label>
+                        </li>
+                        <li>
+                          <input id="ps-l-2" class="visually-hidden" type="radio" name="ps-2" value="large">
+                          <label for="ps-l-2">L</label>
+                        </li>
+                        <li>
+                          <input id="ps-xl-2" class="visually-hidden" type="radio" name="ps-2" value="extra-large">
+                          <label for="ps-xl-2">XL</label>
+                        </li>
+                      </ul>
+
+                      <!-- Выбор цвета -->
+                      <ul class="product__color color">
+                        <li class="color__black">
+                          <input class="visually-hidden" id="pc-2-black" type="radio" name="pc-2" value="black" checked>
+                          <label for="pc-2-black"></label>
+                        </li>
+                        <li class="color__blue">
+                          <input class="visually-hidden" id="pc-2-blue" type="radio" name="pc-2" value="blue">
+                          <label for="pc-2-blue"></label>
+                        </li>
+                        <li class="color__gray">
+                          <input class="visually-hidden" id="pc-2-gray" type="radio" name="pc-2" value="gray">
+                          <label for="pc-2-gray"></label>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="product__cost-wrapper cost">
+
+                      <div class="cost__wrapper">
+
+                        <!-- Цена -->
+                        <ul class="cost__list">
+                          <li class="cost__item">
+                            <p>500</p>
+                            <span>&#8381;</span>
+                          </li>
+                        </ul>
+
+                        <div class="product__quantity quantity-select" data-counter-wrapper>
+
+                          <button class="quantity-select__minus" type="button" data-action="minus"></button>
+                          <input type="number" min="1" max="5" value="1" name="product-quantity-2" data-counter>
+                          <button class="quantity-select__plus" type="button" data-action="plus"></button>
+
+                          <!-- Смс о превышении кол-ва вставится сюда -->
+                        </div>
+
+                        <!-- Цена -->
+                        <ul class="cost__list">
+                          <li class="cost__item">
+                            <p>500</p>
+                            <span>&#8381;</span>
+                          </li>
+                        </ul>
+
+                      </div> <!-- /price__wrapper -->
+                    </div> <!-- /product__price-wrapper -->
+
+                    <a href="#" class="product__image">
+                      <picture>
+                        <!-- Размер фотографии 1x - 130 * 160, 2x - 260 * 320 -->
+                        <!-- webp 1x, 2x -->
+                        <source type="img/webp" srcset="img/products/product-2.webp, img/products/product-2@2x.webp 2x">
+                        <!-- jpg 1x, 2x -->
+                        <img src="img/products/product-2.jpg" srcset="img/products/product-2@2x.jpg 2x" width="130"
+                          height="160" alt="Товар, который вам точно понравится">
+                      </picture>
+                    </a>
+
+                    <button class="product__remove-btn" type="button" data-delete-product
+                      aria-label="Удалить товар"></button>
+                  </div>
+
+                  <!-- Сюда вставляется блок - восстановление товара -->
+                </li>
+              </ul>
+
+            </div> <!-- /making-order__body -->
+
+            <!-- Контактные данные под заполнение -->
+            <div class="making-order__contact contact">
+              <!-- Раскладка блоков -->
+              <div class="contact__wrapper">
+
+                <div class="contact__user-data">
+                  <h2>Контактные данные</h2>
+
+                  <fieldset class="contact__group">
+                    <p class="contact__field">
+                      <input id="field-for-name" type="text" name="user-name" data-name placeholder=" " required>
+                      <label for="field-for-name">Имя</label>
+                    </p>
+                    <p class="contact__field">
+                      <input id="field-for-surname" type="text" data-surname name="user-surname" placeholder=" "
+                        required>
+                      <label for="field-for-surname">Фамилия</label>
+                    </p>
+                  </fieldset>
+
+                  <fieldset class="contact__group">
+                    <p class="contact__field">
+                      <input id="field-for-phone" type="number" name="user-phone" placeholder=" " required>
+                      <label for="field-for-phone">Телефон</label>
+                    </p>
+                    <p class="contact__field">
+                      <input id="field-for-mail" type="email" name="user-email" data-mail placeholder=" " required>
+                      <label for="field-for-mail">Email</label>
+                    </p>
+                  </fieldset>
+
+                  <p class="contact__address contact__field address" data-address-block>
+                    <!-- Для переноса слов используем тег textarea вместо input-->
+                    <textarea id="field-for-address" type="text" name="user-address" data-address-field data-autoresize placeholder=" "
+                      required></textarea>
+                    <label for="field-for-address">Адрес доставки</label>
+
+                    <button class="address__search-btn" type="button" data-address-btn
+                      aria-label="Найти адрес доставки на карте">
+                      <svg width="20" height="20">
+                        <use xlink:href="img/sprite.svg#search-icon"></use>
+                      </svg>
+                    </button>
+                  </p>
+                </div>
+
+                <div class="contact__map map" data-map></div>
+
+                <div class="contact__payment payment">
+                  <h2>Оплата</h2>
+                  <ul class="payment__list">
+                    <li class="payment__item">
+                      <input class="visually-hidden" id="cash-to-courier" type="radio" name="payment"
+                        value="cash-to-the-courier" checked>
+                      <label for="cash-to-courier">Наличными курьеру</label>
                     </li>
-                    <li class="color__blue">
-                      <input class="visually-hidden" id="color-blue" type="radio" name="color" value="blue">
-                      <label for="color-blue"></label>
+                    <li class="payment__item">
+                      <input class="visually-hidden" id="card-to-courier" type="radio" name="payment"
+                        value="by-card-to-the-courier">
+                      <label for="card-to-courier">Картой курьеру</label>
                     </li>
-                    <li class="color__gray">
-                      <input class="visually-hidden" id="color-gray" type="radio" name="color" value="gray">
-                      <label for="color-gray"></label>
+                    <li class="payment__item">
+                      <input class="visually-hidden" id="cash-online" type="radio" name="payment"
+                        value="by-card-online">
+                      <label for="cash-online">Картой онлайн</label>
                     </li>
                   </ul>
                 </div>
 
-                <div class="product__quantity quantity-select" data-select-quantity>
-                  <!-- Цена -->
-                  <!-- <div>
-                    <p>10000</p>
-                    <span>&#8381;</span>
-                  </div> -->
-
-                  <button class="quantity-select__minus" type="button" data-btn-minus></button>
-                  <input type="number" min="1" max="5" value="1" name="product-quantity" data-product-quantity>
-                  <button class="quantity-select__plus" type="button" data-btn-plus></button>
-
-                  <!-- Цена -->
-                  <!-- <div>
-                    <p>20000</p>
-                    <span>&#8381;</span>
-                  </div> -->
-
-                  <!-- Смс о превышении кол-ва вставится сюда -->
+                <div class="contact__user-comment comment">
+                  <h2>Комментарий к заказу</h2>
+                  <p class="contact__field contact__field--textarea">
+                    <textarea id="field-for-comment" name="user-comment" data-autoresize placeholder=" "></textarea>
+                    <label for="field-for-comment">Комментарий к заказу</label>
+                  </p>
+                  <div class="comment__counter">
+                    <p>Использовано <span>0</span>/142 символов</p>
+                  </div>
                 </div>
 
-                <a href="#" class="product__image">
-                  <picture>
-                    <!-- Размер фотографии 1x - 130 * 160, 2x - 260 * 320 -->
-                    <!-- webp 1x, 2x -->
-                    <source type="img/webp" srcset="img/products/product.webp, img/products/product@2x.webp 2x">
-                    <!-- jpg 1x, 2x -->
-                    <img src="img/products/product-1.jpg" srcset="img/products/product-1@2x.jpg 2x" width="130"
-                      height="160" alt="Товар, который вам точно понравится">
-                  </picture>
-                </a>
-
-                <button class="product__remove-btn" type="button" data-delete-product
-                  aria-label="Удалить товар"></button>
-
-              </li>
-            </ul>
-
-            <!-- Контактные данные -->
-            <div class="making-order__contact contact"></div>
+              </div> <!-- /contact__wrapper -->
+            </div> <!-- /contact -->
 
             <!-- Чек - итоговая стоимость -->
-            <!-- --------------- -->
-            <div class="making-order__cheque cheque">
+            <div class="making-order__cheque">
+              <div class="making-order__cheque-wrapper cheque">
 
-              <!-- Таблица -->
-              <table class="cheque__price-list price-list">
+                <!-- Таблица -->
+                <table class="cheque__price-list price-list">
 
-                <!-- Общая стоимость без скидок -->
-                <tbody class="price-list__total-sum">
-                  <tr>
-                    <td class="price-list__title">
-                      <h4>Товары</h4>
-                    </td>
-                    <td class="price-list__number">
-                      <p>24&nbsp;500</p>
-                      <span>&#8381;</span>
-                    </td>
-                  </tr>
-                </tbody>
+                  <!-- Общая стоимость без скидок -->
+                  <tbody class="price-list__total-sum">
+                    <tr>
+                      <td class="price-list__title">
+                        <h4>Товары</h4>
+                      </td>
+                      <td class="price-list__number">
+                        <p>24&nbsp;500</p>
+                        <span>&#8381;</span>
+                      </td>
+                    </tr>
+                  </tbody>
 
-                <!-- Рассчет скидки -->
-                <tbody class="price-list__discount">
-                  <tr class="price-list__total-discount">
-                    <td class="price-list__title">
-                      <h4>Скидка</h4>
-                    </td>
-                    <td class="price-list__number">
-                      <p>-&nbsp;4&nbsp;500</p>
-                      <span>&#8381;</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="price-list__title">
-                      <h4>Акции</h4>
-                    </td>
-                    <td class="price-list__number">
-                      <p>-&nbsp;4&nbsp;000</p>
-                      <span>&#8381;</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="price-list__title">
-                      <h4>Промокод</h4>
-                    </td>
-                    <td class="price-list__number">
-                      <p>-&nbsp;500</p>
-                      <span>&#8381;</span>
-                    </td>
-                  </tr>
-                </tbody>
+                  <!-- Рассчет скидки -->
+                  <tbody class="price-list__discount">
+                    <tr class="price-list__total-discount">
+                      <td class="price-list__title">
+                        <h4>Скидка</h4>
+                      </td>
+                      <td class="price-list__number">
+                        <p>-&nbsp;4&nbsp;500</p>
+                        <span>&#8381;</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="price-list__title">
+                        <h4>Акции</h4>
+                      </td>
+                      <td class="price-list__number">
+                        <p>-&nbsp;4&nbsp;000</p>
+                        <span>&#8381;</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="price-list__title">
+                        <h4>Промокод</h4>
+                      </td>
+                      <td class="price-list__number">
+                        <p>-&nbsp;500</p>
+                        <span>&#8381;</span>
+                      </td>
+                    </tr>
+                  </tbody>
 
-                <!-- Расходы на доставку -->
-                <tbody class="price-list__delivery">
-                  <tr>
-                    <td class="price-list__title">
-                      <h4>Доставка</h4>
-                    </td>
-                    <td class="price-list__number">
-                      <p>200</p>
-                      <span>&#8381;</span>
-                    </td>
-                  </tr>
-                </tbody>
+                  <!-- Расходы на доставку -->
+                  <tbody class="price-list__delivery">
+                    <tr>
+                      <td class="price-list__title">
+                        <h4>Доставка</h4>
+                      </td>
+                      <td class="price-list__number">
+                        <p>200</p>
+                        <span>&#8381;</span>
+                      </td>
+                    </tr>
+                  </tbody>
 
-              </table>
+                </table> <!-- /price-list -->
 
-              <!-- Уточнения по доставке -->
-              <div class="cheque__delivery delivery">
-                <label>
-                  <!-- Поместил текст выше input для скринридеров -->
-                  <div class="delivery__info">
-                    <p>Получить товар со склада</p>
-                    <span>Сроки получения могут измениться</span>
-                  </div>
+                <!-- Уточнения по доставке -->
+                <div class="cheque__delivery delivery">
+                  <label>
+                    <!-- Поместил текст выше input для скринридеров -->
+                    <div class="delivery__info">
+                      <p>Получить товар со склада</p>
+                      <span>Сроки получения могут измениться</span>
+                    </div>
 
-                  <input class="visually-hidden" type="checkbox" name="good-from-the-warehouse">
-                  <!-- Кастомный checkbox -->
-                  <span class="delivery__checkbox-indicator"></span>
-                </label>
-              </div>
-
-              <!-- Итоговая стоимость -->
-              <div class="cheque__price-text total-cost">
-                <p>Итого:</p>
-                <div class="total-cost__number">
-                  <!-- Разделил цифру с значком рубля для удобства работы из js -->
-                  <!-- При добавлении стоимости через js - не забывать про пробел в стоимости!!! -->
-                  <p>20&nbsp;700</p>
-                  <span>&#8381;</span>
+                    <input class="visually-hidden" type="checkbox" name="good-from-the-warehouse">
+                    <!-- Кастомный checkbox -->
+                    <span class="delivery__checkbox-indicator"></span>
+                  </label>
                 </div>
-              </div>
 
-              <!-- Промокод -->
-              <div class="cheque__promo-code promo-code">
+                <!-- Итоговая стоимость -->
+                <div class="cheque__price-text total-cost">
+                  <p>Итого:</p>
+                  <div class="total-cost__number">
+                    <!-- Разделил цифру с значком рубля для удобства работы из js -->
+                    <!-- При добавлении стоимости через js - не забывать про пробел в стоимости!!! -->
+                    <p>20&nbsp;700</p>
+                    <span>&#8381;</span>
+                  </div>
+                </div>
 
-                <label>
-                  <input type="text" name="promotional-code" placeholder="Введите промокод">
-                </label>
+                <!-- Промокод -->
+                <div class="cheque__promo-code promo-code" data-promo-code-block>
 
-                <button class="promo-code__btn" type="button">Применить</button>
+                  <label>
+                    <input type="text" name="promotional-code" data-promo-code-field placeholder="Введите промокод">
+                  </label>
 
-                <!-- Смс об ошибке/удаче :) - сюда вставляем и не забываем убрать кнопку -->
-                <!-- <div class="promo-code__message">
+                  <button class="promo-code__btn" type="button" data-promo-code-btn>Применить</button>
+
+                  <!-- Смс об ошибке/удаче :) - сюда вставляем и не забываем убрать кнопку -->
+                  <!-- <div class="promo-code__message">
                   <span>1B6D9FC</span>
                   <p>&mdash;&nbsp;купон не&nbsp;найден</p>
                 </div> -->
-              </div>
+                </div>
 
-              <button class="cheque__btn-submit" type="submit">Оформить заказ</button>
+                <!-- Доп. div для отступов сбоку -->
+                <div class="cheque__submit-block">
+                  <button class="cheque__btn-submit" type="submit">Оформить заказ</button>
+                </div>
+                <!-- Политика конфиденциальности -->
+                <div class="cheque__privacy-policy privacy-policy">
+                  <p>Нажимая кнопку “Оформить заказ”, Вы соглашаетесь с
+                    <a href="#">политикой конфиденциальности.</a>
+                  </p>
+                </div>
 
-              <!-- Политика конфиденциальности -->
-              <div class="cheque__privacy-policy privacy-policy">
-                <p>Нажимая кнопку “Оформить заказ”, Вы соглашаетесь с
-                  <a href="#">политикой конфиденциальности.</a>
-                </p>
-              </div>
+              </div> <!-- /cheque -->
+            </div> <!-- /making-order__cheque -->
 
-            </div>
+          </div> <!-- /making-order__wrapper -->
 
-          </div>
+        </form>
 
-      </div>
-      </form>
-
-      </div>
+      </div> <!-- /container -->
     </section>
 
 
   </main>
+
+  <footer class="footer">
+    <h2 class="visually-hidden">Подвал сайта</h2>
+    <div class="container">
+      <div class="footer__wrapper">
+
+        <!-- Доп. div для удобства позиционирования -->
+        <div class="footer__body">
+
+          <!-- Подписка на рассылку -->
+          <div class="footer__subscription subscription">
+            <p>Скидка <span>10</span>% за подписку на наши новости</p>
+
+            <div class="subscription__text-field promo-code" data-subscription-block>
+              <form action="#" method="post">
+                <label>
+                  <input type="email" name="mail-for-subscription" data-subscription-field
+                    placeholder="example@mail.ru">
+                </label>
+
+                <button class="promo-code__btn" data-subscription-btn type="submit">Подписаться</button>
+              </form>
+            </div>
+
+            <!-- Политика конфиденциальности -->
+            <div class="footer__privacy-policy privacy-policy">
+              <p>Нажимая кнопку “Подписаться”, Вы соглашаетесь с
+                <a href="#">политикой конфиденциальности.</a>
+              </p>
+            </div>
+          </div>
+
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a href="#">Каталог</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">О&nbsp;компании</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Магазины</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Новости</a>
+            </li>
+          </ul>
+
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a href="#">Оплата и доставка</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Условия возврата</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Бонусная система</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Подарочный сертификат</a>
+            </li>
+          </ul>
+
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a href="#">Telegram</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">WhatsApp</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">Youtube</a>
+            </li>
+            <li class="footer__item">
+              <a href="#">VK</a>
+            </li>
+          </ul>
+
+        </div>
+
+        <ul class="footer__list footer__list--bottom">
+          <li class="footer__item">
+            <a href="#">© All rights reserved</a>
+          </li>
+          <li class="footer__item">
+            <a href="#">Публичная оферта</a>
+          </li>
+          <li class="footer__item">
+            <a href="#">Политика конфиденциальности</a>
+          </li>
+          <li class="footer__item">
+            <div class="footer__copyright copyright">
+              <p>Сделано в студии</p>
+              <a href="#">
+                <svg width="21" height="21">
+                  <use xlink:href="img/sprite.svg#copyright-logo"></use>
+                </svg>
+                <span>5 УГЛОВ</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+
+      </div> <!-- /footer__wrapper -->
+    </div> <!-- /container -->
+  </footer>
+
+  <!-- Шаблон - восстановление товара -->
+  <template id="recovery-item">
+    <div class="product-recovery" data-product-recovery>
+      <!-- Доп. div для удобства раскладки -->
+      <div>
+        <p>Товар <a href="#" data-product-recovery-title>Наименование товара</a> был удален из корзины.</p>
+        <button class="product-recovery__recovery-btn" data-recovery-item type="button">Восстановить</button>
+      </div>
+
+      <button class="product-recovery__close-btn" data-complete-remove-product type="button"
+        aria-label="Закрыть окно восстановления товара"></button>
+    </div>
+  </template>
+
+  <!-- Изменение цены -->
+  <!-- ! Немного не корректно сделано -->
+  <template id="old-price">
+    <li class="price__item price__item--is-old">
+      <!-- Доп. div - для перечеркивания текста -->
+      <div class="price__old">
+        <p>24&nbsp;000</p>
+        <span>&#8381;</span>
+      </div>
+    </li>
+  </template>
 
   <!-- Смс о корректном/не корректном вводе промокода -->
   <template id="promo-code-message">
@@ -361,7 +752,13 @@
     </div>
   </template>
 
-  <script src="js/script.js"></script>
+  <script type="module" src="js/script.js"></script>
+  <!-- подключение яндекс карты -->
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=a9cebd96-88da-4058-aeae-7e3a4c07091f&lang=ru_RU">
+  </script>
+  <!-- Подключение Dadata -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/js/jquery.suggestions.min.js"></script>
 </body>
 
 </html>

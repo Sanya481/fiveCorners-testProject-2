@@ -1,0 +1,25 @@
+.article-number {
+  display: flex;
+  column-gap: 0.5rem;
+
+  @include breakpoint($vp-767) {
+    column-gap: 0.3rem;
+    margin: 0 0 5px;
+  }
+}
+
+.article-number h4,
+.article-number span {
+  font-size: 1.2rem;
+  line-height: 1.25;
+
+  margin: 0
+}
+
+.article-number h4 {
+  color: #6E6E6E;
+}
+
+.article-number span {
+  color: #000;
+}

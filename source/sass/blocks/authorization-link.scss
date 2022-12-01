@@ -19,14 +19,13 @@
   background-color: transparent;
   border: none;
 
-  transition: color 0.3s ease, text-decoration 0.3s ease-in-out;
+  // transition: color 0.3s ease;
 
   // Эффекты при наведении в десктопной версии
   @media (min-width: 1200px) {
     &:hover,
     &:focus {
       color: #000000;
-      text-decoration: none;
     }
 
     &:active {
@@ -36,6 +35,5 @@
 
   &:active {
     color: #f68050;
-    text-decoration: none;
   }
 }

@@ -1,0 +1,53 @@
+.address {
+  font-size: 0;
+}
+
+.contact__field.address textarea {
+  height: 5rem;
+  padding: 1.3rem 7rem 1.3rem 2rem;
+
+  @include breakpoint($vp-767) {
+    height: 5rem;
+    padding: 1rem 6rem 1rem 1.6rem;
+  }
+}
+
+.address__search-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  right: 0;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  width: 7rem;
+  height: 100%;
+
+  transition: transform 0.3s ease;
+
+  @include breakpoint($vp-767) {
+    width: 6rem;
+  }
+}
+
+.address__search-btn.show {
+  transform: translateY(-50%) scale(1);
+}
+
+.address__search-btn svg {
+  pointer-events: none;
+  width: 2rem;
+  height: 2rem;
+
+  @include breakpoint($vp-767) {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+}
+
+.address input {
+  padding: 1.5rem 7rem 1.5rem 2rem;
+}

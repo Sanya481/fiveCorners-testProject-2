@@ -1,0 +1,140 @@
+.product-recovery {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 1.6rem;
+  line-height: 1.3;
+  color: #6E6E6E;
+  background-color: #F1F1F1;
+
+  padding: 1.5rem 2.5rem 1.5rem 2.5rem;
+
+  @include breakpoint($vp-767) {
+    font-size: 1.4rem;
+    line-height: 1.3;
+
+    padding: 1.2rem 0.8rem;
+  }
+}
+
+.product-recovery p {
+  display: inline-block;
+  margin: 0 2rem 0 0;
+
+  @include breakpoint($vp-767) {
+    margin: 0 2rem 0.5rem 0;
+  }
+}
+
+.product-recovery a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      color: rgba(#000, 70%);
+    }
+
+    &:active {
+      color: #000;
+    }
+  }
+
+  &:active {
+    color: #000;
+  }
+}
+
+/* Общие свойства для кнопок */
+.product-recovery__recovery-btn,
+.product-recovery__close-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Кнопка восстановления */
+
+.product-recovery__recovery-btn {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  color: #000;
+
+  @include breakpoint($vp-767) {
+    padding-left: 0;
+  }
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      color: #cc7e5e;
+    }
+
+    &:active {
+      color: #f68050;
+    }
+  }
+
+  &:active {
+    color: #f68050;
+  }
+}
+
+/* Кнопка закрытия */
+.product-recovery__close-btn {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+
+  flex-shrink: 0;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 2px;
+    background-color: #000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover::after,
+    &:focus::after,
+    &:hover::before,
+    &:focus::before {
+      background-color: #d75757;
+    }
+
+    &:active::after,
+    &:active::before {
+      background-color: #f00;
+    }
+  }
+
+  &:active::after,
+  &:active::before {
+    background-color: #f00;
+  }
+}

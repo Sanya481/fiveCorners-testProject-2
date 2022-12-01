@@ -1,0 +1,78 @@
+.payment {
+  @include breakpoint($vp-767) {
+    margin: 0 0 4.2rem;
+  }
+}
+
+.payment__list {
+  @include list-reset;
+
+  font-size: 1.6rem;
+  line-height: 1.3;
+
+}
+
+.payment__item {
+  margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include breakpoint($vp-767) {
+    margin-bottom: 2.2rem;
+  }
+}
+
+.payment__item label {
+  cursor: pointer;
+  padding: 0.3rem 0 0.3rem 3.2rem;
+
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 2.2rem;
+    height: 2.2rem;
+
+    border: 1px solid #6E6E6E;
+    border-radius: 50%;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    padding: 4px;
+  }
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      color: #cc7e5e;
+    }
+
+    &:hover::before,
+    &:focus::before {
+      background-color: rgba(#000, 40%);
+      background-clip: content-box;
+    }
+
+    &:active {
+      color: #f68050;
+    }
+  }
+
+  &:active {
+    color: #f68050;
+  }
+}
+
+.payment__item input:checked+label::before {
+  background-color: #000;
+  /* Свойство background-clip определяет, в каких областях будет находиться фоновая картинка и фоновый цвет блока. */
+  /* content-box — фон заполняет только контентную область, но не заходит во внутренний отступ и под рамку */
+  background-clip: content-box;
+}

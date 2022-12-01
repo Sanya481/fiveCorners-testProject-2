@@ -1,5 +1,9 @@
 .breadcrumbs {
-  margin-bottom: 4rem;
+  margin-bottom: 4.2rem;
+
+  @include breakpoint($vp-767) {
+    margin-bottom: 3.2rem;
+  }
 }
 
 .breadcrumbs__list {
@@ -25,7 +29,7 @@
   color: #6E6E6E;
   text-decoration: none;
 
-  transition: color 0.3s ease;
+  // transition: color 0.3s ease;
 
   // Эффекты при наведении в десктопной версии
   @media (min-width: 1200px) {

@@ -1,0 +1,72 @@
+.color {
+  @include list-reset;
+
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  row-gap: 1rem;
+
+  padding: 0.3rem 0;
+
+  @include breakpoint($vp-767) {
+    column-gap: 2rem;
+    margin-left: 2px;
+  }
+}
+
+.color label {
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+    width: 2.2rem;
+    height: 2.2rem;
+
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #000;
+    z-index: -1;
+
+    display: none;
+  }
+
+}
+
+.color__black label {
+  background-color: #444444;
+}
+
+.color__blue label {
+  background-color: #106DA1;
+}
+
+.color__gray label {
+  background-color: #AE6D0C;
+}
+
+.color input:checked+label::before {
+  display: block;
+}
+
+// Эффекты при наведении в десктопной версии
+@media (min-width: 1200px) {
+
+  .color label:hover::before,
+  .color label:focus::before {
+    display: block;
+    opacity: 0.5;
+  }
+}

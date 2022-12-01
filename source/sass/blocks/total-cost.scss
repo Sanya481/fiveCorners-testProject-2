@@ -6,7 +6,14 @@
   line-height: 1.07;
   font-weight: 700;
 
-  padding: 2rem 0;
+  padding: 2rem;
+
+  @include breakpoint($vp-767) {
+    font-size: 2rem;
+    line-height: 1.2;
+
+    padding: 1.2rem 1.9rem 1.2rem 1.5rem;
+  }
 }
 
 .total-cost__number {

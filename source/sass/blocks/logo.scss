@@ -4,6 +4,36 @@
 
   width: 10rem;
   height: 2.2rem;
+
+  fill: #000;
+
+  // transition: fill 0.3s linear;
+
+  @include breakpoint($vp-767) {
+
+    &.is-open {
+      fill: #fff;
+      z-index: $logo;
+    }
+  }
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      fill: #cc7e5e;
+    }
+
+    &:active {
+      fill: #f68050;
+    }
+  }
+
+  &:active {
+    fill: #f68050;
+    transition-duration: 0s;
+  }
 }
 
 .logo svg {

@@ -1,11 +1,22 @@
 .privacy-policy {
   font-size: 1.4rem;
-  line-height: 1.3rem;
+  line-height: 1.3;
 
   text-align: center;
 }
 
-.privacy-policy p {
+.cheque__privacy-policy.privacy-policy {
+  padding: 0 1.5rem 2.7rem;
+
+  @include breakpoint($vp-767) {
+    padding: 0 1.5rem 2.1rem;
+  }
+}
+
+.privacy-policy p,
+.footer__privacy-policy.privacy-policy p {
+  font-size: 1.4rem;
+  line-height: 1.3;
   margin: 0;
   color: #6E6E6E;
 }
@@ -13,4 +24,28 @@
 .privacy-policy a {
   color: inherit;
   text-decoration: underline;
+
+  transition: text-decoration 0.3s linear;
+
+  // Эффекты при наведении в десктопной версии
+  @media (min-width: 1200px) {
+
+    &:hover,
+    &:focus {
+      color: #cc7e5e;
+      text-decoration: none;
+    }
+
+    &:active {
+      color: #f68050;
+    }
+  }
+
+  &:active {
+    color: #f68050;
+  }
+}
+
+.footer__privacy-policy.privacy-policy {
+  text-align: left;
 }
