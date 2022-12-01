@@ -285,7 +285,7 @@ const addressSearchBtn = document.querySelector('[data-address-btn]');
 
 // Функция ymaps.ready() будет вызвана, когда
 // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
-// ymaps.ready(init);
+ymaps.ready(init);
 
 const center = [55.76, 37.64];
 
@@ -422,65 +422,64 @@ function init() {
 // API-ключ
 const token = "589b8e7dc737a4e8fc700bba004fb2a537b21120";
 
+$(document).ready(function () {
 
-// $(document).ready(function () {
+  /* Адрес */
+  $("[data-address-field]").suggestions({
+    token: token,
+    type: "ADDRESS",
+    /* Вызывается, когда пользователь выбирает одну из подсказок */
+    onSelect: function (suggestion) {
+      console.log(suggestion);
+    }
+  });
 
-//   /* Адрес */
-//   $("[data-address-field]").suggestions({
-//     token: token,
-//     type: "ADDRESS",
-//     /* Вызывается, когда пользователь выбирает одну из подсказок */
-//     onSelect: function (suggestion) {
-//       console.log(suggestion);
-//     }
-//   });
+  /* Имя */
+  $("[data-name]").suggestions({
+    token: token,
+    type: "NAME",
+    params: {
+      parts: ["NAME"]
+    },
+    /* Вызывается, когда пользователь выбирает одну из подсказок */
+    onSelect: function (suggestion) {
+      console.log(suggestion);
+    }
+  });
 
-//   /* Имя */
-//   $("[data-name]").suggestions({
-//     token: token,
-//     type: "NAME",
-//     params: {
-//       parts: ["NAME"]
-//     },
-//     /* Вызывается, когда пользователь выбирает одну из подсказок */
-//     onSelect: function (suggestion) {
-//       console.log(suggestion);
-//     }
-//   });
+  /* Фамилия */
+  $("[data-surname]").suggestions({
+    token: token,
+    type: "NAME",
+    params: {
+      parts: ["SURNAME"]
+    },
+    /* Вызывается, когда пользователь выбирает одну из подсказок */
+    onSelect: function (suggestion) {
+      console.log(suggestion);
+    }
+  });
 
-//   /* Фамилия */
-//   $("[data-surname]").suggestions({
-//     token: token,
-//     type: "NAME",
-//     params: {
-//       parts: ["SURNAME"]
-//     },
-//     /* Вызывается, когда пользователь выбирает одну из подсказок */
-//     onSelect: function (suggestion) {
-//       console.log(suggestion);
-//     }
-//   });
+  /* Почта */
+  $("[data-mail]").suggestions({
+    token: token,
+    type: "EMAIL",
+    /* Вызывается, когда пользователь выбирает одну из подсказок */
+    onSelect: function (suggestion) {
+      console.log(suggestion);
+    }
+  });
 
-//   /* Почта */
-//   $("[data-mail]").suggestions({
-//     token: token,
-//     type: "EMAIL",
-//     /* Вызывается, когда пользователь выбирает одну из подсказок */
-//     onSelect: function (suggestion) {
-//       console.log(suggestion);
-//     }
-//   });
-
-//   /* Подписка на рассылку */
-//   $("[data-subscription-field]").suggestions({
-//     token: token,
-//     type: "EMAIL",
-//     /* Вызывается, когда пользователь выбирает одну из подсказок */
-//     onSelect: function (suggestion) {
-//       console.log(suggestion);
-//     }
-//   });
-// })
+  /* Подписка на рассылку */
+  $("[data-subscription-field]").suggestions({
+    token: token,
+    type: "EMAIL",
+    /* Вызывается, когда пользователь выбирает одну из подсказок */
+    onSelect: function (suggestion) {
+      console.log(suggestion);
+    }
+  });
+})
 
 /* Удаление/Восстановление товара */
 
