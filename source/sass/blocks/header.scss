@@ -32,10 +32,10 @@
       right: -50%;
 
       width: 50%;
-      height: 100vh;
+      height: 0;
       background-color: #000;
 
-      transition: right 0.3s linear;
+      transition: right 0.3s linear, height 0.3s linear;
       z-index: $mobile-menu;
 
     }
@@ -67,6 +67,7 @@
 
 .header.is-open::before {
   right: 0;
+  height: 100vh;
 }
 
 .header__nav-block {
@@ -77,3 +78,10 @@
     margin: 0;
   }
 }
+
+
+/* header__search-modal */
+.header .container {
+  position: relative;
+}
+

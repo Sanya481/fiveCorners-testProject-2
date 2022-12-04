@@ -26,11 +26,6 @@
 
     transition: top 0.3s linear, transform 0.3s linear;
 
-    &.is-open {
-      top: 0;
-      transform: translateX(0);
-    }
-
     /* Выезжающий фон - слева у мобильного меню */
     &::after {
       content: "";
@@ -39,8 +34,9 @@
       right: 50%;
 
       width: 50%;
-      height: 100%;
+      height: 0;
       background-color: #000;
+      transition: height 0.3s linear
     }
   }
 }
@@ -106,5 +102,18 @@
 
   &:active {
     color: #f68050;
+  }
+}
+
+.site-nav.is-open {
+  @include breakpoint($vp-767) {
+    top: 0;
+    transform: translateX(0);
+  }
+}
+
+.site-nav.is-open::after {
+  @include breakpoint($vp-767) {
+    height: 100vh;
   }
 }

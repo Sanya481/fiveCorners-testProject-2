@@ -1,6 +1,6 @@
-.address {
-  font-size: 0;
-}
+// .address {
+//   font-size: 0;
+// }
 
 .contact__field.address textarea {
   height: 5rem;
@@ -25,6 +25,9 @@
 
   width: 7rem;
   height: 100%;
+
+  fill: none;
+  stroke: #000;
 
   transition: transform 0.3s ease;
 

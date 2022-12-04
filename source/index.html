@@ -51,11 +51,12 @@
           <nav class="header__nav user-nav">
             <ul class="user-nav__list">
               <li class="user-nav__item">
-                <a href="#" class="user-nav__link" aria-label="Поиск по сайту">
+                <button href="#" class="user-nav__link user-nav__link--btn" data-site-search
+                  aria-label="Поиск по сайту">
                   <svg width="18" height="18">
                     <use xlink:href="img/sprite.svg#search-icon"></use>
                   </svg>
-                </a>
+                </button>
               </li>
               <li class="user-nav__item">
                 <a href="#" class="user-nav__link" aria-label="Профиль пользователя">
@@ -86,8 +87,28 @@
           <!-- Бургер в мобилке -->
           <button class="header__burger burger" type="button" data-burger aria-label="Закрыть/открыть меню"></button>
         </div>
+
+      </div>
+
+      <!--Поиск по сайту на десктопе -->
+      <div class="header__search-modal search-modal" data-site-search-modal>
+        <div class="search-modal__container">
+          <form action="#" method="post">
+            <div class="promo-code" data-search-block>
+              <label>
+                <input type="text" name="promotional-code" data-search-field placeholder="Поиск по сайту">
+              </label>
+
+              <button class="promo-code__btn" type="submit" data-search-btn>Найти</button>
+            </div>
+          </form>
+
+          <button class="search-modal__close" type="button" data-search-modal-close
+            aria-label="Закрыть окно поиска"></button>
+        </div>
       </div>
     </div>
+
   </header>
 
   <main>
@@ -308,7 +329,8 @@
                       <ul class="product__size size">
                         <li>
                           <input id="ps-xs-2" class="visually-hidden" type="radio" name="ps-2" value="extra-small">
-                          <label for="ps-xs-2">XS</label>
+                          XS
+                          <label for="ps-xs-2"></label>
                         </li>
                         <li>
                           <input id="ps-s-2" class="visually-hidden" type="radio" name="ps-2" value="small">
@@ -431,8 +453,8 @@
 
                   <p class="contact__address contact__field address" data-address-block>
                     <!-- Для переноса слов используем тег textarea вместо input-->
-                    <textarea id="field-for-address" type="text" name="user-address" data-address-field data-autoresize placeholder=" "
-                      required></textarea>
+                    <textarea id="field-for-address" type="text" name="user-address" data-address-field data-autoresize
+                      placeholder=" " required></textarea>
                     <label for="field-for-address">Адрес доставки</label>
 
                     <button class="address__search-btn" type="button" data-address-btn
