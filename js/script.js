@@ -222,6 +222,9 @@ const subscriptionBlock = document.querySelector('[data-subscription-block]');
 /* Поиск адреса на карте */
 const addressBlock = document.querySelector('[data-address-block]');
 
+/* Поиск по сайту */
+const searchBlock = document.querySelector('[data-search-block]');
+
 
 // !!! метод trim() позволяет удалить пробелы с обоих концов строки
 /**
@@ -275,6 +278,20 @@ if (addressBlock) {
 
   addressField.addEventListener('input', onShowAddressBtn);
 }
+
+/* Поиску по сайту */
+if (searchBlock) {
+
+  const searchField = searchBlock.querySelector('[data-search-field]');
+  const searchBtn = searchBlock.querySelector('[data-search-btn]');
+
+  const onShowsearchBtn = () => {
+    isEmptyString(searchField.value, searchBtn)
+  }
+
+  searchField.addEventListener('input', onShowsearchBtn);
+}
+
 
 
 // ==============
@@ -567,5 +584,102 @@ if (textareaField) {
   })
 }
 
+
+/* Поиск по сайту в десктопе */
+// - Автофокус на инпуте пропадает - похоже из-за св-ва visibility. Можно через display попробовать
+
+const siteSearchBtn = document.querySelector('[data-site-search]');
+// const siteSearchModal = document.querySelector('[data-site-search-modal]');
+
+/**
+ * Закрытие по нажатию на Escape
+ */
+const onEscPress = (evt) => {
+  if (isEscKey(evt)) {
+    const headerSite = document.querySelector('[data-header]');
+    const siteSearchModal = headerSite.querySelector('[data-site-search-modal]');
+    const searchModalClose = siteSearchModal.querySelector('[data-search-modal-close]');
+
+    headerSite.classList.remove('site-search-open');
+    siteSearchModal.style.visibility = 'hidden';
+    siteSearchModal.style.maxHeight = 0;
+
+    document.removeEventListener('keydown', onEscPress);
+    searchModalClose.removeEventListener('click', onSearchCloseBtn);
+  }
+}
+
+/**
+ * Закрытие по клику на крестик
+ */
+const onSearchCloseBtn = () => {
+  const headerSite = document.querySelector('[data-header]');
+  const siteSearchModal = headerSite.querySelector('[data-site-search-modal]');
+  const searchModalClose = siteSearchModal.querySelector('[data-search-modal-close]');
+
+  headerSite.classList.remove('site-search-open');
+  siteSearchModal.style.visibility = 'hidden';
+  siteSearchModal.style.maxHeight = 0;
+
+  searchModalClose.removeEventListener('click', onSearchCloseBtn);
+}
+
+/**
+ * Закрытие по клику вне области модалки
+ */
+const onOutSearchModalClick = (evt) => {
+  const headerSite = document.querySelector('[data-header]');
+  const siteSearchModal = headerSite.querySelector('[data-site-search-modal]');
+
+  if (!evt.composedPath().includes(siteSearchModal)) {
+    headerSite.classList.remove('site-search-open');
+    siteSearchModal.style.maxHeight = 0;
+    siteSearchModal.style.visibility = 'hidden';
+  }
+}
+
+/**
+ * Открытие по клику на иконку
+ */
+const onOpenSearchModal = (evt) => {
+  evt.stopPropagation();
+  const headerSite = document.querySelector('[data-header]');
+  const siteSearchModal = headerSite.querySelector('[data-site-search-modal]');
+  const searchModalClose = siteSearchModal.querySelector('[data-search-modal-close]');
+  const searchField = siteSearchModal.querySelector('[data-search-field]');
+
+  headerSite.classList.toggle('site-search-open');
+
+  if (headerSite.classList.contains('site-search-open')) {
+    /* Доступность с клавиатуры - вкл */
+    siteSearchModal.style.visibility = 'visible';
+
+    siteSearchModal.style.maxHeight = siteSearchModal.scrollHeight + 'px';
+
+    searchField.focus();
+
+    document.addEventListener('keydown', onEscPress);
+    searchModalClose.addEventListener('click', onSearchCloseBtn);
+    document.addEventListener('click', onOutSearchModalClick);
+
+  } else {
+    /* Доступность с клавиатуры - выкл */
+    // Psss...У hh.ru такого нет ;)
+    // Но не работает автофокус!? Первый раз работает, потом - нет :(
+    siteSearchModal.style.visibility = 'hidden';
+
+    siteSearchModal.style.maxHeight = 0;
+
+    document.removeEventListener('keydown', onEscPress);
+    searchModalClose.removeEventListener('click', onSearchCloseBtn);
+  }
+
+}
+
+if (window.matchMedia('(min-width: 1200px)').matches) {
+  if (siteSearchBtn) {
+    siteSearchBtn.addEventListener('click', onOpenSearchModal);
+  }
+}
 
 
