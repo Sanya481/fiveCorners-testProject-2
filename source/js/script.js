@@ -439,7 +439,6 @@ function init() {
 // API-ключ
 const token = "589b8e7dc737a4e8fc700bba004fb2a537b21120";
 
-
 $(document).ready(function () {
 
   /* Адрес */
