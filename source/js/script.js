@@ -647,7 +647,7 @@ const onOpenSearchModal = (evt) => {
   const headerSite = document.querySelector('[data-header]');
   const siteSearchModal = headerSite.querySelector('[data-site-search-modal]');
   const searchModalClose = siteSearchModal.querySelector('[data-search-modal-close]');
-  const searchField = siteSearchModal.querySelector('[data-promo-code-field]');
+  const searchField = siteSearchModal.querySelector('[data-search-field]');
 
   headerSite.classList.toggle('site-search-open');
 
