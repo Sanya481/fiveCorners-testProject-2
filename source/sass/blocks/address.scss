@@ -26,6 +26,9 @@
   width: 7rem;
   height: 100%;
 
+  fill: none;
+  stroke: #000;
+
   transition: transform 0.3s ease;
 
   @include breakpoint($vp-767) {

@@ -63,10 +63,13 @@
 
 // Эффекты при наведении в десктопной версии
 @media (min-width: 1200px) {
-
-  .color label:hover::before,
-  .color label:focus::before {
+  .color input~label:hover::before,
+  .color input~label:focus::before {
     display: block;
     opacity: 0.5;
   }
 }
+
+
+
+
